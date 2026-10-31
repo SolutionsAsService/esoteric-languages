@@ -1,0 +1,38 @@
+{"title": "Piet",
+ "description": "Piet programs are images in 20 colours, named after Piet Mondrian. This site generates a Hello World image and runs it: {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>A Piet program is a picture made of <i>codels</i>, square cells in one of 18 colours (six hues in three lightnesses) plus white and black. Touching codels of one colour form a block. The interpreter moves from block to block, and what it does depends on how far the hue and the lightness change on the way.</p>
+<p>Numbers live on a <i>stack</i>: a pile where the last number put on is the first taken off. Most commands take numbers off the stack or put them on.</p>
+<p>The language is named after the painter Piet Mondrian. This site's grid of black bars and coloured fields borrows from him too, and its colours are Piet's own.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">Colour change is the command</h2>
+{{piettable}}
+<p class="prose"><i>Push</i> pushes the number of codels in the block being left; that is how numbers get into a Piet program. Black codels and the edges of the image are walls; white ones are crossed without a command.</p>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">The site’s build drew this program from the sentence, saved it as a PNG, read the PNG back and ran it: {{size}}, {{steps}} colour changes, and it prints {{output}}.</p>
+{{program}}
+{{run}}
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose">{{trace}}</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}

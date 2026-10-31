@@ -1,0 +1,48 @@
+{"title": "Befunge",
+ "description": "Befunge programs are grids that the instruction pointer can cross in four directions. Its Hello World program, run here, takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>A Befunge-93 program is a grid of 80 by 25 characters. The instruction pointer starts at the top left moving right, and arrows turn it up, down, left or right. When it runs off one edge it comes back on the opposite one. Values live on a stack.</p>
+<p>Befunge was designed to be as hard to compile as possible: the program can change its own grid while it runs, with <code>p</code>.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The commands this program uses</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Commands"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>"</code></td><td>Start or stop string mode: until the next <code>"</code>, every character is pushed as its code</td></tr>
+<tr><td><code>&gt; &lt; ^ v</code></td><td>Move right, left, up or down from now on</td></tr>
+<tr><td><code>:</code></td><td>Duplicate the top of the stack</td></tr>
+<tr><td><code>#</code></td><td>Bridge: skip the next cell</td></tr>
+<tr><td><code>,</code></td><td>Pop a value and print it as a character</td></tr>
+<tr><td><code>_</code></td><td>Pop a value: move right if it is 0, left otherwise</td></tr>
+<tr><td><code>@</code></td><td>End the program</td></tr>
+</tbody></table></div>
+<p class="prose">The full language also has arithmetic, a random direction (<code>?</code>), input, and <code>g</code> and <code>p</code> to read and write the grid itself.</p>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">One line of {{size}}. It prints {{output}} in {{steps}} steps.</p>
+{{program}}
+{{run}}
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose"><p>The string <code>"!dlroW ,olleH"</code> is written backwards because a stack gives back the last thing pushed first: <code>H</code> comes off the top.</p>
+{{trace}}</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}

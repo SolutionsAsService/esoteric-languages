@@ -1,0 +1,47 @@
+{"title": "Malbolge",
+ "description": "Malbolge was designed to be as hard to program as possible. Its Hello World program, run here step by step, takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>Malbolge is named after Malebolge, the eighth circle of hell in Dante's <i>Inferno</i>. Its memory holds numbers in base 3, its only arithmetic is a deliberately strange operation on base-3 digits, and every instruction is scrambled through a substitution table as soon as it has run.</p>
+<p>It was hard enough that the first working programs were not written by a person. They were found by a computer search.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The eight instructions</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="The eight instructions"><table>
+<thead><tr><th>(cell + position) mod 94</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>4</td><td>Jump to the address stored where the data pointer points</td></tr>
+<tr><td>5</td><td>Print the accumulator as a character</td></tr>
+<tr><td>23</td><td>Read a character into the accumulator</td></tr>
+<tr><td>39</td><td>Rotate the value at the data pointer one base-3 digit right; copy it to the accumulator</td></tr>
+<tr><td>40</td><td>Move the data pointer to the address stored where it points</td></tr>
+<tr><td>62</td><td>The “crazy” operation on the accumulator and the value at the data pointer</td></tr>
+<tr><td>81</td><td>End</td></tr>
+<tr><td>68, and anything else</td><td>Do nothing</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">A program of {{size}} that prints {{output}}, without a comma, in {{steps}} steps. The site prints what it really prints.</p>
+{{program}}
+{{run}}
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose">{{trace}}</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}

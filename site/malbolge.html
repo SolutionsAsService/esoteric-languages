@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Malbolge · Esoteric Languages</title>
+<meta name="description" content="Malbolge was designed to be as hard to program as possible. Its Hello World program, run here step by step, takes 40 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/malbolge">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Malbolge · Esoteric Languages">
+<meta property="og:description" content="Malbolge was designed to be as hard to program as possible. Its Hello World program, run here step by step, takes 40 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/malbolge">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-malbolge">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff" aria-current=page>Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#C00000;--i:#fff"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">Malbolge</h1><p class="band-line">Designed to be as hard to program as possible. Every instruction rewrites itself after it runs.</p><p class="band-by">By Ben Olmstead, 1998.</p></div><div class="band-glyph" aria-hidden="true"><span class="g g-mb-wrap"><span class="g-code g-mb">(=&lt;`#9]~6ZY32Vx/4Rs+0No-&amp;Jk)&quot;Fh}|Bcy?`=*z]Kw%oG4UUS0/@-ejc(:&#x27;8dc</span><span class="g-code g-mb g-mb-after"><i>y</i><i>d</i><i>3</i><i>&lt;</i><i>]</i><i>[</i><i>b</i><i>@</i><i>Z</i><i>|</i><i>8</i><i>)</i><i>P</i><i>_</i><i>:</i><i>4</i><i>H</i><i>v</i><i>R</i><i>$</i><i>{</i><i>1</i><i>x</i><i>w</i><i>q</i><i>F</i><i>K</i><i>f</i><i>z</i><i>J</i><i>Y</i><i>i</i><i>&quot;</i><i>&gt;</i><i>V</i><i>#</i><i>+</i><i>&lt;</i><i>d</i>*z<i>·</i><i>H</i>w<i>·</i><i>·</i><i>·</i><i>·</i><i>·</i><i>·</i><i>·</i><i>·</i><i>·</i><i>·</i>-<i>·</i>j<i>9</i><i>·</i><i>·</i><i>·</i><i>·</i>d<i>!</i></span></span></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>Malbolge is named after Malebolge, the eighth circle of hell in Dante's <i>Inferno</i>. Its memory holds numbers in base 3, its only arithmetic is a deliberately strange operation on base-3 digits, and every instruction is scrambled through a substitution table as soon as it has run.</p>
+<p>It was hard enough that the first working programs were not written by a person. They were found by a computer search.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The eight instructions</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="The eight instructions"><table>
+<thead><tr><th>(cell + position) mod 94</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td>4</td><td>Jump to the address stored where the data pointer points</td></tr>
+<tr><td>5</td><td>Print the accumulator as a character</td></tr>
+<tr><td>23</td><td>Read a character into the accumulator</td></tr>
+<tr><td>39</td><td>Rotate the value at the data pointer one base-3 digit right; copy it to the accumulator</td></tr>
+<tr><td>40</td><td>Move the data pointer to the address stored where it points</td></tr>
+<tr><td>62</td><td>The “crazy” operation on the accumulator and the value at the data pointer</td></tr>
+<tr><td>81</td><td>End</td></tr>
+<tr><td>68, and anything else</td><td>Do nothing</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">A program of 64 characters that prints <code>Hello World!</code>, without a comma, in 40 steps. The site prints what it really prints.</p>
+<figure class="prog"><figcaption>hello.mb · 64 characters · <a href="programs/hello.mb" download>download</a></figcaption><pre tabindex="0" aria-label="Malbolge program"><code>(=&lt;`#9]~6ZY32Vx/4Rs+0No-&amp;Jk)&quot;Fh}|Bcy?`=*z]Kw%oG4UUS0/@-ejc(:&#x27;8dc</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.mb
+site/programs/hello.mb: &#x27;Hello World!&#x27; in 40 steps</pre></figure>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose"><p>Running it changes it. After the 40 steps, 58 of the program’s 64 characters are different. Changed characters are underlined; a dot is a value with no printable character.</p><div class="mb-chunks" role="group" aria-label="The program before and after, in chunks of 16 characters"><span class="mb-chunk mb-lab"><span>before</span><span>after</span></span><span class="mb-chunk"><code>(=&lt;`#9]~6ZY32Vx/</code><code><u>y</u><u>d</u><u>3</u><u>&lt;</u><u>]</u><u>[</u><u>b</u><u>@</u><u>Z</u><u>|</u><u>8</u><u>)</u><u>P</u><u>_</u><u>:</u><u>4</u></code></span><span class="mb-chunk"><code>4Rs+0No-&amp;Jk)&quot;Fh}</code><code><u>H</u><u>v</u><u>R</u><u>$</u><u>{</u><u>1</u><u>x</u><u>w</u><u>q</u><u>F</u><u>K</u><u>f</u><u>z</u><u>J</u><u>Y</u><u>i</u></code></span><span class="mb-chunk"><code>|Bcy?`=*z]Kw%oG4</code><code><u>&quot;</u><u>&gt;</u><u>V</u><u>#</u><u>+</u><u>&lt;</u><u>d</u>*z<u>·</u><u>H</u>w<u>·</u><u>·</u><u>·</u><u>·</u></code></span><span class="mb-chunk"><code>UUS0/@-ejc(:&#x27;8dc</code><code><u>·</u><u>·</u><u>·</u><u>·</u><u>·</u><u>·</u>-<u>·</u>j<u>9</u><u>·</u><u>·</u><u>·</u><u>·</u>d<u>!</u></code></span></div><details class="all"><summary>Every changed cell, as a list</summary><div class="tablewrap" tabindex="0" role="region" aria-label="Changed cells"><table><thead><tr><th>Cell</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td>0</td><td><code>(</code></td><td><code>y</code></td></tr><tr><td>1</td><td><code>=</code></td><td><code>d</code></td></tr><tr><td>2</td><td><code>&lt;</code></td><td><code>3</code></td></tr><tr><td>3</td><td><code>`</code></td><td><code>&lt;</code></td></tr><tr><td>4</td><td><code>#</code></td><td><code>]</code></td></tr><tr><td>5</td><td><code>9</code></td><td><code>[</code></td></tr><tr><td>6</td><td><code>]</code></td><td><code>b</code></td></tr><tr><td>7</td><td><code>~</code></td><td><code>@</code></td></tr><tr><td>8</td><td><code>6</code></td><td><code>Z</code></td></tr><tr><td>9</td><td><code>Z</code></td><td><code>|</code></td></tr><tr><td>10</td><td><code>Y</code></td><td><code>8</code></td></tr><tr><td>11</td><td><code>3</code></td><td><code>)</code></td></tr><tr><td>12</td><td><code>2</code></td><td><code>P</code></td></tr><tr><td>13</td><td><code>V</code></td><td><code>_</code></td></tr><tr><td>14</td><td><code>x</code></td><td><code>:</code></td></tr><tr><td>15</td><td><code>/</code></td><td><code>4</code></td></tr><tr><td>16</td><td><code>4</code></td><td><code>H</code></td></tr><tr><td>17</td><td><code>R</code></td><td><code>v</code></td></tr><tr><td>18</td><td><code>s</code></td><td><code>R</code></td></tr><tr><td>19</td><td><code>+</code></td><td><code>$</code></td></tr><tr><td>20</td><td><code>0</code></td><td><code>{</code></td></tr><tr><td>21</td><td><code>N</code></td><td><code>1</code></td></tr><tr><td>22</td><td><code>o</code></td><td><code>x</code></td></tr><tr><td>23</td><td><code>-</code></td><td><code>w</code></td></tr><tr><td>24</td><td><code>&amp;</code></td><td><code>q</code></td></tr><tr><td>25</td><td><code>J</code></td><td><code>F</code></td></tr><tr><td>26</td><td><code>k</code></td><td><code>K</code></td></tr><tr><td>27</td><td><code>)</code></td><td><code>f</code></td></tr><tr><td>28</td><td><code>&quot;</code></td><td><code>z</code></td></tr><tr><td>29</td><td><code>F</code></td><td><code>J</code></td></tr><tr><td>30</td><td><code>h</code></td><td><code>Y</code></td></tr><tr><td>31</td><td><code>}</code></td><td><code>i</code></td></tr><tr><td>32</td><td><code>|</code></td><td><code>&quot;</code></td></tr><tr><td>33</td><td><code>B</code></td><td><code>&gt;</code></td></tr><tr><td>34</td><td><code>c</code></td><td><code>V</code></td></tr><tr><td>35</td><td><code>y</code></td><td><code>#</code></td></tr><tr><td>36</td><td><code>?</code></td><td><code>+</code></td></tr><tr><td>37</td><td><code>`</code></td><td><code>&lt;</code></td></tr><tr><td>38</td><td><code>=</code></td><td><code>d</code></td></tr><tr><td>41</td><td><code>]</code></td><td><code>·</code></td></tr><tr><td>42</td><td><code>K</code></td><td><code>H</code></td></tr><tr><td>44</td><td><code>%</code></td><td><code>·</code></td></tr><tr><td>45</td><td><code>o</code></td><td><code>·</code></td></tr><tr><td>46</td><td><code>G</code></td><td><code>·</code></td></tr><tr><td>47</td><td><code>4</code></td><td><code>·</code></td></tr><tr><td>48</td><td><code>U</code></td><td><code>·</code></td></tr><tr><td>49</td><td><code>U</code></td><td><code>·</code></td></tr><tr><td>50</td><td><code>S</code></td><td><code>·</code></td></tr><tr><td>51</td><td><code>0</code></td><td><code>·</code></td></tr><tr><td>52</td><td><code>/</code></td><td><code>·</code></td></tr><tr><td>53</td><td><code>@</code></td><td><code>·</code></td></tr><tr><td>55</td><td><code>e</code></td><td><code>·</code></td></tr><tr><td>57</td><td><code>c</code></td><td><code>9</code></td></tr><tr><td>58</td><td><code>(</code></td><td><code>·</code></td></tr><tr><td>59</td><td><code>:</code></td><td><code>·</code></td></tr><tr><td>60</td><td><code>&#x27;</code></td><td><code>·</code></td></tr><tr><td>61</td><td><code>8</code></td><td><code>·</code></td></tr><tr><td>63</td><td><code>c</code></td><td><code>!</code></td></tr></tbody></table></div></details><p>All 40 steps. The instruction is not the character itself but (character + position) mod 94, and after each step the character is replaced through a fixed substitution table, so the same cell means something else next time.</p><div class="tablewrap" tabindex="0" role="region" aria-label="Every step"><table><thead><tr><th>Step</th><th>Cell</th><th>Holds</th><th>Does</th><th>Prints</th></tr></thead><tbody><tr><td>1</td><td>0</td><td><code>(</code></td><td>mov</td><td></td></tr><tr><td>2</td><td>1</td><td><code>=</code></td><td>crz</td><td></td></tr><tr><td>3</td><td>2</td><td><code>&lt;</code></td><td>crz</td><td></td></tr><tr><td>4</td><td>3</td><td><code>`</code></td><td>out</td><td>H</td></tr><tr><td>5</td><td>4</td><td><code>#</code></td><td>rot</td><td></td></tr><tr><td>6</td><td>5</td><td><code>9</code></td><td>crz</td><td></td></tr><tr><td>7</td><td>6</td><td><code>]</code></td><td>out</td><td>e</td></tr><tr><td>8</td><td>7</td><td><code>~</code></td><td>rot</td><td></td></tr><tr><td>9</td><td>8</td><td><code>6</code></td><td>crz</td><td></td></tr><tr><td>10</td><td>9</td><td><code>Z</code></td><td>out</td><td>l</td></tr><tr><td>11</td><td>10</td><td><code>Y</code></td><td>out</td><td>l</td></tr><tr><td>12</td><td>11</td><td><code>3</code></td><td>crz</td><td></td></tr><tr><td>13</td><td>12</td><td><code>2</code></td><td>crz</td><td></td></tr><tr><td>14</td><td>13</td><td><code>V</code></td><td>out</td><td>o</td></tr><tr><td>15</td><td>14</td><td><code>x</code></td><td>mov</td><td></td></tr><tr><td>16</td><td>15</td><td><code>/</code></td><td>crz</td><td></td></tr><tr><td>17</td><td>16</td><td><code>4</code></td><td>nop</td><td></td></tr><tr><td>18</td><td>17</td><td><code>R</code></td><td>out</td><td>␠</td></tr><tr><td>19</td><td>18</td><td><code>s</code></td><td>rot</td><td></td></tr><tr><td>20</td><td>19</td><td><code>+</code></td><td>crz</td><td></td></tr><tr><td>21</td><td>20</td><td><code>0</code></td><td>nop</td><td></td></tr><tr><td>22</td><td>21</td><td><code>N</code></td><td>out</td><td>W</td></tr><tr><td>23</td><td>22</td><td><code>o</code></td><td>rot</td><td></td></tr><tr><td>24</td><td>23</td><td><code>-</code></td><td>nop</td><td></td></tr><tr><td>25</td><td>24</td><td><code>&amp;</code></td><td>crz</td><td></td></tr><tr><td>26</td><td>25</td><td><code>J</code></td><td>out</td><td>o</td></tr><tr><td>27</td><td>26</td><td><code>k</code></td><td>rot</td><td></td></tr><tr><td>28</td><td>27</td><td><code>)</code></td><td>nop</td><td></td></tr><tr><td>29</td><td>28</td><td><code>&quot;</code></td><td>crz</td><td></td></tr><tr><td>30</td><td>29</td><td><code>F</code></td><td>out</td><td>r</td></tr><tr><td>31</td><td>30</td><td><code>h</code></td><td>mov</td><td></td></tr><tr><td>32</td><td>31</td><td><code>}</code></td><td>crz</td><td></td></tr><tr><td>33</td><td>32</td><td><code>|</code></td><td>crz</td><td></td></tr><tr><td>34</td><td>33</td><td><code>B</code></td><td>out</td><td>l</td></tr><tr><td>35</td><td>34</td><td><code>c</code></td><td>rot</td><td></td></tr><tr><td>36</td><td>35</td><td><code>y</code></td><td>crz</td><td></td></tr><tr><td>37</td><td>36</td><td><code>?</code></td><td>out</td><td>d</td></tr><tr><td>38</td><td>37</td><td><code>`</code></td><td>rot</td><td></td></tr><tr><td>39</td><td>38</td><td><code>=</code></td><td>out</td><td>!</td></tr><tr><td>40</td><td>39</td><td><code>*</code></td><td>end</td><td></td></tr></tbody></table></div></div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/Malbolge">Esolang wiki: Malbolge</a></li><li><a href="https://en.wikipedia.org/wiki/Malbolge">Wikipedia: Malbolge</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="piet.html"><span>Previous</span>Piet</a><a href="lolcode.html"><span>Next</span>LOLCODE</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

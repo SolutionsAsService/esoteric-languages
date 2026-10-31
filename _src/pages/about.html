@@ -1,0 +1,46 @@
+{"title": "About this site",
+ "description": "How Esoteric Languages runs every program it shows, what counts as a step in each language, and how to check the numbers yourself."}
+---
+<header class="band" style="--f:#FFFFFF;--i:#000">
+<div class="band-text"><p class="kicker">About</p><h1 id="top">How this site knows</h1>
+<p class="band-line">Every program on the poster was run by the site’s own build, from the same file you can download.</p></div>
+<div class="band-glyph" aria-hidden="true"></div>
+</header>
+<div class="wrap">
+<section class="section" aria-labelledby="run-h">
+<h2 id="run-h">Run them yourself</h2>
+<div class="prose">
+<p>The interpreters are short Python files in <a href="{{repo}}/tree/main/_src/eso">_src/eso</a>, written for this site. With Python 3 and, for Piet, the Pillow library:</p>
+</div>
+<figure class="term"><figcaption>from a copy of the repository</figcaption><pre tabindex="0" aria-label="Commands">$ python _src/build.py
+$ python _src/eso/run.py site/programs/hello.bf site/programs/hello-piet.png</pre></figure>
+<div class="prose">
+<p>The build writes every program to <code>site/programs/</code>, runs each one from that file, and stops with an error if any output or step count differs from what the pages say. It also generates the Whitespace and Piet programs, and checks that the Piet PNG reads back as the program it drew.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="step-h">
+<h2 id="step-h">What counts as a step</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="What counts as a step"><table>
+<thead><tr><th>Language</th><th>One step is</th><th>Hello, World!</th></tr></thead>
+<tbody>
+<tr><td><a href="brainfuck.html">Brainfuck</a>, <a href="ook.html">Ook!</a></td><td>One command executed (a jump counts once)</td><td>{{steps brainfuck}}</td></tr>
+<tr><td><a href="befunge.html">Befunge</a></td><td>One cell the instruction pointer executes; a cell skipped by <code>#</code> is not counted</td><td>{{steps befunge}}</td></tr>
+<tr><td><a href="whitespace.html">Whitespace</a></td><td>One decoded instruction</td><td>{{steps whitespace}}</td></tr>
+<tr><td><a href="piet.html">Piet</a></td><td>One move from one colour block to another</td><td>{{steps piet}}</td></tr>
+<tr><td><a href="malbolge.html">Malbolge</a></td><td>One instruction, including those that do nothing</td><td>{{steps malbolge}}</td></tr>
+<tr><td><a href="lolcode.html">LOLCODE</a></td><td>One statement, not counting <code>HAI</code> and <code>KTHXBYE</code></td><td>{{steps lolcode}}</td></tr>
+<tr><td><a href="scratch.html">Scratch</a></td><td>Not run; the poster counts blocks</td><td>{{blocks}} blocks</td></tr>
+</tbody></table></div>
+<p class="prose">The counts are not comparable across languages: one LOLCODE step is a whole statement, one Brainfuck step a single character. Read each number as what that program cost in its own language, not as a ranking. The outputs differ slightly too: the Brainfuck, Ook! and Malbolge programs print <code>Hello World!</code> without the comma, as they were written.</p>
+</section>
+
+<section class="section" aria-labelledby="design-h">
+<h2 id="design-h">The design</h2>
+<div class="prose">
+<p>The grid of black bars is Piet Mondrian's, the painter Piet is named after. Every colour on the poster comes from the Piet specification's 20 colours. Each field on the home page shows the real program, drawn from its own file. The design decisions and reviews are recorded in the <a href="{{repo}}/blob/main/_src/design/DESIGN-LOG.md">design log</a>.</p>
+<p>Facts about the languages link to the Esolang wiki, Wikipedia or the designers' own pages. Esoteric languages are a community hobby, and the <a href="https://esolangs.org/">Esolang wiki</a> lists thousands more.</p>
+</div>
+</section>
+</div>
+{{pager}}

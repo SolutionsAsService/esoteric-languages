@@ -1,0 +1,58 @@
+{
+  "brainfuck": {
+    "name": "Brainfuck", "file": "hello.bf", "field": [1, 0], "ink": "#000",
+    "by": "Urban Müller", "year": 1993,
+    "line": "Eight one-character commands move a pointer along a row of bytes.",
+    "sources": [["Esolang wiki: Brainfuck", "https://esolangs.org/wiki/Brainfuck"],
+                ["Wikipedia: Brainfuck", "https://en.wikipedia.org/wiki/Brainfuck"]]
+  },
+  "ook": {
+    "name": "Ook!", "file": "hello.ook", "field": [1, 1], "ink": "#000",
+    "by": "David Morgan-Mar", "year": null,
+    "line": "Brainfuck, written so an orangutan could read it.",
+    "sources": [["Esolang wiki: Ook!", "https://esolangs.org/wiki/Ook!"],
+                ["David Morgan-Mar: Ook!", "https://www.dangermouse.net/esoteric/ook.html"]]
+  },
+  "befunge": {
+    "name": "Befunge", "file": "hello.befunge", "field": [1, 2], "ink": "#000",
+    "by": "Chris Pressey", "year": 1993,
+    "line": "The program is a grid; the instruction pointer can travel in four directions.",
+    "sources": [["Esolang wiki: Befunge", "https://esolangs.org/wiki/Befunge"],
+                ["Wikipedia: Befunge", "https://en.wikipedia.org/wiki/Befunge"]]
+  },
+  "whitespace": {
+    "name": "Whitespace", "file": "hello.ws", "field": "W", "ink": "#000",
+    "by": "Edwin Brady and Chris Morris", "year": 2003,
+    "line": "Only spaces, tabs and line feeds mean anything. Everything else is a comment.",
+    "sources": [["Esolang wiki: Whitespace", "https://esolangs.org/wiki/Whitespace"],
+                ["Wikipedia: Whitespace", "https://en.wikipedia.org/wiki/Whitespace_(programming_language)"]]
+  },
+  "piet": {
+    "name": "Piet", "file": "hello-piet.png", "field": "K", "ink": "#fff",
+    "by": "David Morgan-Mar", "year": null,
+    "line": "Programs are images. Commands are changes of colour between blocks.",
+    "sources": [["David Morgan-Mar: Piet", "https://www.dangermouse.net/esoteric/piet.html"],
+                ["Esolang wiki: Piet", "https://esolangs.org/wiki/Piet"]]
+  },
+  "malbolge": {
+    "name": "Malbolge", "file": "hello.mb", "field": [2, 0], "ink": "#fff",
+    "by": "Ben Olmstead", "year": 1998,
+    "line": "Designed to be as hard to program as possible. Every instruction rewrites itself after it runs.",
+    "sources": [["Esolang wiki: Malbolge", "https://esolangs.org/wiki/Malbolge"],
+                ["Wikipedia: Malbolge", "https://en.wikipedia.org/wiki/Malbolge"]]
+  },
+  "lolcode": {
+    "name": "LOLCODE", "file": "hello.lol", "field": [1, 5], "ink": "#000",
+    "by": "Adam Lindsay", "year": 2007,
+    "line": "A real, readable language written in the voice of lolcat captions.",
+    "sources": [["Esolang wiki: LOLCODE", "https://esolangs.org/wiki/LOLCODE"],
+                ["Wikipedia: LOLCODE", "https://en.wikipedia.org/wiki/LOLCODE"]]
+  },
+  "scratch": {
+    "name": "Scratch", "file": null, "field": [1, 4], "ink": "#fff",
+    "by": "the Lifelong Kindergarten group at the MIT Media Lab", "year": 2007,
+    "line": "The control: visual and unusual-looking, but designed to be easy, not hard.",
+    "sources": [["Scratch: About", "https://scratch.mit.edu/about"],
+                ["Wikipedia: Scratch", "https://en.wikipedia.org/wiki/Scratch_(programming_language)"]]
+  }
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brainfuck · Esoteric Languages</title>
+<meta name="description" content="Brainfuck has eight one-character commands and a row of bytes. Its Hello World program, run here, takes 906 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/brainfuck">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Brainfuck · Esoteric Languages">
+<meta property="og:description" content="Brainfuck has eight one-character commands and a row of bytes. Its Hello World program, run here, takes 906 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/brainfuck">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-brainfuck">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000" aria-current=page>Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#FF0000;--i:#000"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">Brainfuck</h1><p class="band-line">Eight one-character commands move a pointer along a row of bytes.</p><p class="band-by">By Urban Müller, 1993.</p></div><div class="band-glyph" aria-hidden="true"><span class="g g-bf-wrap"><span class="g-code g-bf">++++++++[&gt;++++[&gt;++&gt;+++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;+&gt;+&gt;-&gt;&gt;+[&lt;]&lt;-]&gt;&gt;.&gt;---.+++++++..+++.&gt;&gt;.&lt;-.&lt;.+++.------.--------.&gt;&gt;+.&gt;++.</span><span class="g-tape"><span class="cell"><b>0</b>·</span><span class="cell"><b>0</b>·</span><span class="cell"><b>72</b>H</span><span class="cell"><b>100</b>d</span><span class="cell"><b>87</b>W</span><span class="cell"><b>33</b>!</span><span class="cell"><b>10</b>↵</span><span class="cell"><b>0</b>·</span></span></span></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>A Brainfuck program works on a long row of bytes, all starting at zero, and a pointer to one of them. Every character that is not one of the eight commands is ignored, so comments need no marker.</p>
+<p>It is the best-known example of a <i>Turing tarpit</i>: a language that can compute anything, but in which almost nothing is easy.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The eight commands</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="The eight commands"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>&gt;</code></td><td>Move the pointer one cell right</td></tr>
+<tr><td><code>&lt;</code></td><td>Move the pointer one cell left</td></tr>
+<tr><td><code>+</code></td><td>Add 1 to the current cell</td></tr>
+<tr><td><code>-</code></td><td>Subtract 1 from the current cell</td></tr>
+<tr><td><code>.</code></td><td>Print the current cell as a character</td></tr>
+<tr><td><code>,</code></td><td>Read one character into the current cell</td></tr>
+<tr><td><code>[</code></td><td>If the current cell is 0, jump past the matching <code>]</code></td></tr>
+<tr><td><code>]</code></td><td>If the current cell is not 0, jump back to the matching <code>[</code></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">This program prints <code>Hello World!<span class="nl">↵</span></code>: no comma, and a line feed at the end. It is 106 characters long and takes 906 steps.</p>
+<figure class="prog"><figcaption>hello.bf · 106 characters · <a href="programs/hello.bf" download>download</a></figcaption><pre tabindex="0" aria-label="Brainfuck program"><code>++++++++[&gt;++++[&gt;++&gt;+++&gt;+++&gt;+&lt;&lt;&lt;&lt;-]&gt;+&gt;+&gt;-&gt;&gt;+[&lt;]&lt;-]&gt;&gt;.&gt;---.+++++++..+++.&gt;&gt;.&lt;-.&lt;.+++.------.--------.&gt;&gt;+.&gt;++.</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.bf
+site/programs/hello.bf: &#x27;Hello World!\n&#x27; in 906 steps</pre></figure>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose">
+<p>Adding 72 one at a time to reach <code>H</code> would be slow to write, so the program starts with nested loops that multiply: eight times through the outer loop, four times through the inner one, adding 2, 3, 3 and 1 to four cells each time.</p>
+<p>After 851 steps the loops have built these values on the tape, and the pointer (outlined) sits on 72, which is <code>H</code>. The first <code>.</code> prints it.</p><ol class="tape" aria-label="The first eight tape cells"><li><b>0</b><span>·</span></li><li><b>0</b><span>·</span></li><li class=cur><b>72</b><span>H</span></li><li><b>104</b><span>h</span></li><li><b>88</b><span>X</span></li><li><b>32</b><span>·</span></li><li><b>8</b><span>·</span></li><li><b>0</b><span>·</span></li></ol>
+</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/Brainfuck">Esolang wiki: Brainfuck</a></li><li><a href="https://en.wikipedia.org/wiki/Brainfuck">Wikipedia: Brainfuck</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="index.html"><span>Previous</span>Index</a><a href="ook.html"><span>Next</span>Ook!</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

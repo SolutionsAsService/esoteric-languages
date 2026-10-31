@@ -1,0 +1,50 @@
+{"title": "Brainfuck",
+ "description": "Brainfuck has eight one-character commands and a row of bytes. Its Hello World program, run here, takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>A Brainfuck program works on a long row of bytes, all starting at zero, and a pointer to one of them. Every character that is not one of the eight commands is ignored, so comments need no marker.</p>
+<p>It is the best-known example of a <i>Turing tarpit</i>: a language that can compute anything, but in which almost nothing is easy.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The eight commands</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="The eight commands"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>&gt;</code></td><td>Move the pointer one cell right</td></tr>
+<tr><td><code>&lt;</code></td><td>Move the pointer one cell left</td></tr>
+<tr><td><code>+</code></td><td>Add 1 to the current cell</td></tr>
+<tr><td><code>-</code></td><td>Subtract 1 from the current cell</td></tr>
+<tr><td><code>.</code></td><td>Print the current cell as a character</td></tr>
+<tr><td><code>,</code></td><td>Read one character into the current cell</td></tr>
+<tr><td><code>[</code></td><td>If the current cell is 0, jump past the matching <code>]</code></td></tr>
+<tr><td><code>]</code></td><td>If the current cell is not 0, jump back to the matching <code>[</code></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">This program prints {{output}}: no comma, and a line feed at the end. It is {{size}} long and takes {{steps}} steps.</p>
+{{program}}
+{{run}}
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose">
+<p>Adding 72 one at a time to reach <code>H</code> would be slow to write, so the program starts with nested loops that multiply: eight times through the outer loop, four times through the inner one, adding 2, 3, 3 and 1 to four cells each time.</p>
+{{trace}}
+</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Befunge · Esoteric Languages</title>
+<meta name="description" content="Befunge programs are grids that the instruction pointer can cross in four directions. Its Hello World program, run here, takes 98 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/befunge">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Befunge · Esoteric Languages">
+<meta property="og:description" content="Befunge programs are grids that the instruction pointer can cross in four directions. Its Hello World program, run here, takes 98 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/befunge">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-befunge">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000" aria-current=page>Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#00FF00;--i:#000"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">Befunge</h1><p class="band-line">The program is a grid; the instruction pointer can travel in four directions.</p><p class="band-by">By Chris Pressey, 1993.</p></div><div class="band-glyph" aria-hidden="true"><svg class="g g-svg g-bef" viewBox="0 0 420 92" preserveAspectRatio="xMinYMax meet" aria-hidden="true" focusable="false"><rect class="bv" x="2" y="82.1" width="16" height="5.9"/><text class="bc" x="10.0" y="22">&quot;</text><rect class="bv" x="22" y="82.1" width="16" height="5.9"/><text class="bc" x="30.0" y="22">!</text><rect class="bv" x="42" y="82.1" width="16" height="5.9"/><text class="bc" x="50.0" y="22">d</text><rect class="bv" x="62" y="82.1" width="16" height="5.9"/><text class="bc" x="70.0" y="22">l</text><rect class="bv" x="82" y="82.1" width="16" height="5.9"/><text class="bc" x="90.0" y="22">r</text><rect class="bv" x="102" y="82.1" width="16" height="5.9"/><text class="bc" x="110.0" y="22">o</text><rect class="bv" x="122" y="82.1" width="16" height="5.9"/><text class="bc" x="130.0" y="22">W</text><rect class="bv" x="142" y="82.1" width="16" height="5.9"/><text class="bc" x="150.0" y="22"> </text><rect class="bv" x="162" y="82.1" width="16" height="5.9"/><text class="bc" x="170.0" y="22">,</text><rect class="bv" x="182" y="82.1" width="16" height="5.9"/><text class="bc" x="190.0" y="22">o</text><rect class="bv" x="202" y="82.1" width="16" height="5.9"/><text class="bc" x="210.0" y="22">l</text><rect class="bv" x="222" y="82.1" width="16" height="5.9"/><text class="bc" x="230.0" y="22">l</text><rect class="bv" x="242" y="82.1" width="16" height="5.9"/><text class="bc" x="250.0" y="22">e</text><rect class="bv" x="262" y="82.1" width="16" height="5.9"/><text class="bc" x="270.0" y="22">H</text><rect class="bv" x="282" y="82.1" width="16" height="5.9"/><text class="bc" x="290.0" y="22">&quot;</text><rect class="bv" x="302" y="57.0" width="16" height="31.0"/><text class="bc" x="310.0" y="22">&gt;</text><rect class="bv" x="322" y="57.0" width="16" height="31.0"/><text class="bc" x="330.0" y="22">:</text><rect class="bv" x="342" y="32.0" width="16" height="56.0"/><text class="bc" x="350.0" y="22">#</text><rect class="bv" x="362" y="59.0" width="16" height="29.0"/><text class="bc" x="370.0" y="22">,</text><rect class="bv" x="382" y="57.0" width="16" height="31.0"/><text class="bc" x="390.0" y="22">_</text><rect class="bv" x="402" y="82.1" width="16" height="5.9"/><text class="bc" x="410.0" y="22">@</text></svg></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>A Befunge-93 program is a grid of 80 by 25 characters. The instruction pointer starts at the top left moving right, and arrows turn it up, down, left or right. When it runs off one edge it comes back on the opposite one. Values live on a stack.</p>
+<p>Befunge was designed to be as hard to compile as possible: the program can change its own grid while it runs, with <code>p</code>.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The commands this program uses</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Commands"><table>
+<thead><tr><th>Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>"</code></td><td>Start or stop string mode: until the next <code>"</code>, every character is pushed as its code</td></tr>
+<tr><td><code>&gt; &lt; ^ v</code></td><td>Move right, left, up or down from now on</td></tr>
+<tr><td><code>:</code></td><td>Duplicate the top of the stack</td></tr>
+<tr><td><code>#</code></td><td>Bridge: skip the next cell</td></tr>
+<tr><td><code>,</code></td><td>Pop a value and print it as a character</td></tr>
+<tr><td><code>_</code></td><td>Pop a value: move right if it is 0, left otherwise</td></tr>
+<tr><td><code>@</code></td><td>End the program</td></tr>
+</tbody></table></div>
+<p class="prose">The full language also has arithmetic, a random direction (<code>?</code>), input, and <code>g</code> and <code>p</code> to read and write the grid itself.</p>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">One line of 21 cells. It prints <code>Hello, World!</code> in 98 steps.</p>
+<figure class="prog"><figcaption>hello.befunge · 21 cells · <a href="programs/hello.befunge" download>download</a></figcaption><pre tabindex="0" aria-label="Befunge program"><code>&quot;!dlroW ,olleH&quot;&gt;:#,_@</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.befunge
+site/programs/hello.befunge: &#x27;Hello, World!&#x27; in 98 steps</pre></figure>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose"><p>The string <code>"!dlroW ,olleH"</code> is written backwards because a stack gives back the last thing pushed first: <code>H</code> comes off the top.</p>
+<p>The bars in the band above count how often the instruction pointer passed each cell. The string cells are passed once, pushing the letters backwards; the six cells of the print loop <code>&gt;:#,_</code> are passed again and again, and <code>#</code> makes the pointer jump the cell after it on the way back.</p><div class="tablewrap" tabindex="0" role="region" aria-label="Visits per cell"><table class="visits"><thead><tr><th>Cell</th><th>Visits</th></tr></thead><tbody><tr><td><code>&quot;</code></td><td>1</td></tr><tr><td><code>!</code></td><td>1</td></tr><tr><td><code>d</code></td><td>1</td></tr><tr><td><code>l</code></td><td>1</td></tr><tr><td><code>r</code></td><td>1</td></tr><tr><td><code>o</code></td><td>1</td></tr><tr><td><code>W</code></td><td>1</td></tr><tr><td><code>␠</code></td><td>1</td></tr><tr><td><code>,</code></td><td>1</td></tr><tr><td><code>o</code></td><td>1</td></tr><tr><td><code>l</code></td><td>1</td></tr><tr><td><code>l</code></td><td>1</td></tr><tr><td><code>e</code></td><td>1</td></tr><tr><td><code>H</code></td><td>1</td></tr><tr><td><code>&quot;</code></td><td>1</td></tr><tr><td><code>&gt;</code></td><td>14</td></tr><tr><td><code>:</code></td><td>14</td></tr><tr><td><code>#</code></td><td>27</td></tr><tr><td><code>,</code></td><td>13</td></tr><tr><td><code>_</code></td><td>14</td></tr><tr><td><code>@</code></td><td>1</td></tr></tbody></table></div></div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/Befunge">Esolang wiki: Befunge</a></li><li><a href="https://en.wikipedia.org/wiki/Befunge">Wikipedia: Befunge</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="ook.html"><span>Previous</span>Ook!</a><a href="whitespace.html"><span>Next</span>Whitespace</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

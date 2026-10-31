@@ -1,0 +1,45 @@
+{"title": "Whitespace",
+ "description": "Whitespace uses only spaces, tabs and line feeds. Its Hello World program is invisible; run here, it takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>In Whitespace only three characters count: space, tab and line feed. Every other character is ignored, so a Whitespace program can hide inside the blank parts of a program in another language, or look like an empty file.</p>
+<p>Like <a href="befunge.html">Befunge</a> and Piet, it keeps numbers on a <i>stack</i> (a pile where the last number put on is the first taken off) and has a <i>heap</i> for numbers stored at an address.</p>
+<p>It was released on 1 April. The band above draws this site's program with the invisible made visible: outlined bars are spaces, solid black bars are tabs, taller red bars are line feeds.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">How instructions are spelled</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Instruction groups"><table>
+<thead><tr><th>Starts with</th><th>Group</th><th>Examples used here</th></tr></thead>
+<tbody>
+<tr><td><code>[Space]</code></td><td>Stack</td><td><code>[Space][Space]</code> number: push it</td></tr>
+<tr><td><code>[Tab][Space]</code></td><td>Arithmetic</td><td>add, subtract, multiply, divide, modulo</td></tr>
+<tr><td><code>[Tab][Tab]</code></td><td>Heap</td><td>store and retrieve</td></tr>
+<tr><td><code>[Line feed]</code></td><td>Flow control</td><td><code>[LF][LF][LF]</code>: end the program</td></tr>
+<tr><td><code>[Tab][Line feed]</code></td><td>Input and output</td><td><code>[Tab][LF][Space][Space]</code>: print a character</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">The site’s build writes this program from the sentence, then runs it: {{size}}, {{steps}} steps, and it prints {{output}}. Below, each space is shown as <code>[S]</code>, each tab as <code>[T]</code> and each line feed as <code>[L]</code>; the downloadable file contains only the real characters.</p>
+{{program}}
+{{run}}
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<div class="prose">{{trace}}</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}
