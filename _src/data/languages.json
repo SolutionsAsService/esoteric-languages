@@ -48,6 +48,33 @@
     "sources": [["Esolang wiki: LOLCODE", "https://esolangs.org/wiki/LOLCODE"],
                 ["Wikipedia: LOLCODE", "https://en.wikipedia.org/wiki/LOLCODE"]]
   },
+  "chef": {
+    "name": "Chef", "file": "hello.chef", "field": [1, 3], "ink": "#000",
+    "by": "David Morgan-Mar", "year": 2002,
+    "line": "A program is a recipe: ingredients hold the numbers and mixing bowls are the stacks.",
+    "sources": [["David Morgan-Mar: Chef", "https://www.dangermouse.net/esoteric/chef.html"],
+                ["Esolang wiki: Chef", "https://esolangs.org/wiki/Chef"]]
+  },
+  "shakespeare": {
+    "name": "Shakespeare", "file": "hello.spl", "field": [2, 1], "ink": "#000",
+    "by": "Karl Wiberg and Jon Åslund", "year": 2001,
+    "line": "A program is a play: the characters are variables, and a kind word is worth more than an unkind one.",
+    "sources": [["Esolang wiki: Shakespeare", "https://esolangs.org/wiki/Shakespeare"],
+                ["Wikipedia: Shakespeare Programming Language", "https://en.wikipedia.org/wiki/Shakespeare_Programming_Language"]]
+  },
+  "unlambda": {
+    "name": "Unlambda", "file": "hello.unl", "field": [2, 5], "ink": "#fff",
+    "by": "David Madore", "year": 1999,
+    "line": "No variables and no loops: only functions applied to functions.",
+    "sources": [["Esolang wiki: Unlambda", "https://esolangs.org/wiki/Unlambda"],
+                ["Wikipedia: Unlambda", "https://en.wikipedia.org/wiki/Unlambda"]]
+  },
+  "false": {
+    "name": "FALSE", "file": "hello.false", "field": [2, 2], "ink": "#000",
+    "by": "Wouter van Oortmerssen", "year": 1993,
+    "line": "A tiny stack language with lambdas, made to have the smallest compiler possible.",
+    "sources": [["Esolang wiki: FALSE", "https://esolangs.org/wiki/FALSE"]]
+  },
   "scratch": {
     "name": "Scratch", "file": null, "field": [1, 4], "ink": "#fff",
     "by": "the Lifelong Kindergarten group at the MIT Media Lab", "year": 2007,

@@ -15,10 +15,14 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / '_src'
 OUT = ROOT / 'site'
 sys.path.insert(0, str(SRC / 'eso'))
+import chef  # noqa: E402
+import falselang  # noqa: E402
 import langs  # noqa: E402
 import malbolge  # noqa: E402
 import piet  # noqa: E402
 import run as runner  # noqa: E402
+import spl  # noqa: E402
+import unlambda  # noqa: E402
 
 SITE_URL = 'https://esoteric-languages.shadw.app/'
 REPO_URL = 'https://github.com/SolutionsAsService/esoteric-languages'
@@ -37,6 +41,18 @@ EXPECT = {
     'piet': ('Hello, World!', 26),
     'malbolge': ('Hello World!', 40),
     'lolcode': ('Hello, World!\n', 1),
+    'chef': ('Hello world!', 14),
+    'shakespeare': ('Hello, World!\n', 27),
+    'unlambda': ('Hello, World!\n', 14),
+    'false': ('Hello, World!\n', 5),
+}
+# A second program for the languages whose page shows one: file, output, steps.
+EXPECT2 = {
+    'lolcode': ('count.lol', 'O HAI 0\nO HAI 1\nO HAI 2\n', 11),
+    'chef': ('alphabet.chef', 'ABC', 20),
+    'shakespeare': ('letters.spl', 'ABCDE', 22),
+    'unlambda': ('skk.unl', 'a', 7),
+    'false': ('countdown.false', '54321\n', 55),
 }
 SCRATCH_BLOCKS = [('event', 'when ⚑ clicked'), ('looks', 'say [Hello, World!]')]
 
@@ -53,12 +69,14 @@ def field(key):
 # ------------------------------------------------------------------ programs
 PROG = {}   # key -> program text (or Piet grid)
 RUN = {}    # key -> (output, steps)
+RUN2 = {}   # key -> (output, steps) of the page's second program
 
 
 def write_programs():
     d = OUT / 'programs'
     d.mkdir(parents=True, exist_ok=True)
-    for f in ('hello.bf', 'hello.befunge', 'hello.mb', 'hello.lol', 'count.lol'):
+    for f in ('hello.bf', 'hello.befunge', 'hello.mb', 'hello.lol', 'count.lol', 'hello.chef', 'alphabet.chef',
+              'hello.spl', 'letters.spl', 'hello.unl', 'skk.unl', 'hello.false', 'countdown.false'):
         shutil.copyfile(SRC / 'programs' / f, d / f)
     bf = (SRC / 'programs/hello.bf').read_text(encoding='utf-8')
     (d / 'hello.ook').write_text(langs.bf_to_ook(bf) + '\n', encoding='utf-8', newline='\n')
@@ -73,10 +91,11 @@ def write_programs():
         if RUN[key] != EXPECT[key]:
             raise BuildError(f'{key}: {path.name} now gives {RUN[key]!r}, the pages say {EXPECT[key]!r}')
         PROG[key] = grid if key == 'piet' else path.read_bytes().decode('utf-8')
-    lol2 = langs.lol_run((d / 'count.lol').read_text(encoding='utf-8'))
-    if lol2 != ('O HAI 0\nO HAI 1\nO HAI 2\n', 11):
-        raise BuildError(f'count.lol now gives {lol2!r}')
-    RUN['lolcount'] = lol2
+    for key, (name, out, steps) in EXPECT2.items():
+        got = runner.run_file(d / name)
+        if got != (out, steps):
+            raise BuildError(f'{name} now gives {got!r}, the pages say {(out, steps)!r}')
+        RUN2[key] = got
 
 
 def size_of(key):
@@ -132,6 +151,15 @@ def glyph(key):
                 f'<span class="g-code g-mb g-mb-after">{row}</span></span>')
     if key == 'lolcode':
         return f'<p class="g g-lol">{html.escape(PROG[key].strip())}</p>'
+    if key in ('chef', 'shakespeare', 'unlambda', 'false'):
+        # the program's own text: for Chef its ingredients, for the play its first lines
+        text = PROG[key].strip()
+        if key == 'chef':
+            text = 'Ingredients.' + text.split('Ingredients.')[1].split('Method.')[0].rstrip()
+        elif key == 'shakespeare':
+            text = text.split(']', 1)[1].strip()
+            text = '\n'.join(l.strip() for l in text.split('\n') if l.strip())
+        return f'<p class="g g-txt g-{key}">{html.escape(text)}</p>'
     if key == 'befunge':
         line, visits = befunge_visits()
         n, cw, top = len(line), 20, max(visits)
@@ -319,11 +347,12 @@ def trace(key):
                 f' mod 94, and after each step the character is replaced through a fixed substitution table, so the'
                 f' same cell means something else next time.</p><div class="tablewrap" tabindex="0" role="region" aria-label="Every step">'
                 f'<table><thead><tr><th>Step</th><th>Cell</th><th>Holds</th><th>Does</th><th>Prints</th></tr></thead><tbody>{rows}</tbody></table></div>')
-    if key == 'lolcode':
-        return (f'<figure class="prog"><figcaption>count.lol · <a href="programs/count.lol" download>download</a></figcaption>'
-                f'<pre tabindex="0" aria-label="count.lol"><code>{html.escape(PROG_TEXT("count.lol"))}</code></pre></figure>'
+    if key in EXPECT2:
+        name = EXPECT2[key][0]
+        return (f'<figure class="prog"><figcaption>{name} · <a href="programs/{name}" download>download</a></figcaption>'
+                f'<pre tabindex="0" aria-label="{name}"><code>{html.escape(PROG_TEXT(name))}</code></pre></figure>'
                 f'<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">'
-                f'$ python _src/eso/run.py site/programs/count.lol\n{html.escape(repr(RUN["lolcount"][0]))} in {RUN["lolcount"][1]} steps</pre></figure>')
+                f'$ python _src/eso/run.py site/programs/{name}\n{html.escape(repr(RUN2[key][0]))} in {RUN2[key][1]} steps</pre></figure>')
     raise BuildError(key)
 
 
@@ -365,6 +394,10 @@ def expand(key, body):
             return run_block(k)
         if name == 'steps':
             return f'{RUN[k][1]:,}'
+        if name == 'steps2':
+            return f'{RUN2[k][1]:,}'
+        if name == 'output2':
+            return f'<code>{shown(RUN2[k][0])}</code>'
         if name == 'output':
             return f'<code>{shown(RUN[k][0])}</code>'
         if name == 'size':
@@ -417,20 +450,20 @@ def favicon():
 
 
 def og():
-    cells, x = [], 0
-    widths = [3, 2, 4, 3, 5, 3, 2, 2]
+    cells = []
+    widths = [3, 2, 3, 4, 3, 3, 3, 3, 4, 3, 2, 3]  # in 100 px units, four fields to a row, three rows
     for i, key in enumerate(LANG):
         w = widths[i] * 100
         row = i // 4
         x = sum(widths[(i // 4) * 4:i]) * 100
         name = html.escape(LANG[key]['name'])
-        cells.append(f'<rect x="{x + 8}" y="{230 + row * 200 + 8}" width="{w - 16}" height="184" fill="{field(key)}"/>'
-                     f'<text x="{x + 28}" y="{230 + row * 200 + 60}" font-family="Archivo, Arial, sans-serif" font-weight="900"'
+        cells.append(f'<rect x="{x + 8}" y="{230 + row * 130 + 4}" width="{w - 16}" height="122" fill="{field(key)}"/>'
+                     f'<text x="{x + 28}" y="{230 + row * 130 + 50}" font-family="Archivo, Arial, sans-serif" font-weight="900"'
                      f' font-size="34" fill="{LANG[key]["ink"]}">{name}</text>')
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">'
             f'<rect width="1200" height="630" fill="#000"/><rect x="8" y="8" width="1184" height="214" fill="#F4F1EA"/>'
             f'<text x="40" y="110" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="78">Esoteric Languages</text>'
-            f'<text x="40" y="180" font-family="Archivo, Arial, sans-serif" font-size="34">Eight ways to say Hello, World!, each one run by the site</text>'
+            f'<text x="40" y="180" font-family="Archivo, Arial, sans-serif" font-size="34">Twelve ways to say Hello, World!, eleven run by the site</text>'
             f'{"".join(cells)}</svg>\n')
 
 

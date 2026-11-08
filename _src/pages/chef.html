@@ -1,0 +1,52 @@
+{"title": "Chef",
+ "description": "Chef programs are recipes: ingredients hold the numbers and mixing bowls are stacks. Its Hello World recipe, run here, takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>A Chef program is a recipe. The ingredients are variables, each with an amount, and the method is the program. Mixing bowls and baking dishes are stacks: you put ingredients into a bowl, pour the bowl into a dish, and what is in the dish when the recipe ends is what the program prints. The specification also asks that a program be a good recipe.</p>
+<p>Whether a number comes out as a number or a letter depends on the measure. Dry ingredients (grams, pinches) print as numbers; liquid ones (millilitres, dashes) print as characters, and <code>Liquefy</code> turns dry into liquid. That is how a recipe full of eggs and lard says “Hello”.</p>
+<p>This site runs a part of Chef: the instructions in the table. Auxiliary recipes and the random <code>Mix</code> are not supported.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The instructions used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Instructions"><table>
+<thead><tr><th>Sentence</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>Put <i>x</i> into the mixing bowl.</code></td><td>Push the value of ingredient <i>x</i> onto the bowl</td></tr>
+<tr><td><code>Fold <i>x</i> into the mixing bowl.</code></td><td>Pop the top of the bowl into ingredient <i>x</i></td></tr>
+<tr><td><code>Add <i>x</i>.</code> <code>Remove <i>x</i>.</code></td><td>Add to, or subtract from, the top of the bowl the value of <i>x</i></td></tr>
+<tr><td><code>Combine <i>x</i>.</code> <code>Divide <i>x</i>.</code></td><td>Multiply, or integer-divide, the top of the bowl by <i>x</i></td></tr>
+<tr><td><code>Liquefy contents of the mixing bowl.</code></td><td>Make everything in the bowl liquid, so it prints as characters</td></tr>
+<tr><td><code>Pour contents of the mixing bowl into the baking dish.</code></td><td>Copy the bowl to the dish, keeping the order</td></tr>
+<tr><td><code>Verb the <i>x</i>.</code> … <code>Verb the <i>x</i> until verbed.</code></td><td>A loop: it runs while <i>x</i> is not zero, and the closing line takes 1 off <i>x</i></td></tr>
+<tr><td><code>Serves 1.</code></td><td>Print the first baking dish, from the top down</td></tr>
+</tbody></table></div>
+<p class="prose">Numbered bowls and dishes (<code>the 2nd mixing bowl</code>), <code>Take</code>, <code>Stir</code>, <code>Clean</code> and <code>Set aside</code> also work; the programs here do not need them.</p>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">{{size}}; it prints {{output}} in {{steps}} steps, one for each method sentence. The words are the usual Chef example, so the output is <code>Hello world!</code> with a small w and no newline.</p>
+{{program}}
+{{run}}
+<p class="prose">The recipe pushes the letters last-to-first, because a stack gives back the last thing put in. <code>Liquefy</code> then turns the whole bowl into characters, and the dish is printed from the top: H, then e, and so on. The ingredient called <code>zests</code> has no measure, and is the space.</p>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A loop, to count down from C to A: the flour is the counter, starting at 3, and each time round puts the current letter in the bowl and takes 1 off it. It prints {{output2}} in {{steps2}} steps.</p>
+{{trace}}
+<p class="prose">The letters go in as C, B, A, so A is on top and prints first. The letters are liquid (<code>ml</code>), so they print as characters; the flour and sugar are dry and never reach the dish.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}
