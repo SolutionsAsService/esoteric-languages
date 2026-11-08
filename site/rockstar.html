@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rockstar · Esoteric Languages</title>
+<meta name="description" content="Rockstar programs are written to read like power-ballad lyrics. Its Hello World program, run here, takes 2 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/rockstar">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rockstar · Esoteric Languages">
+<meta property="og:description" content="Rockstar programs are written to read like power-ballad lyrics. Its Hello World program, run here, takes 2 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/rockstar">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-rockstar">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000">Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000">Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff">Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000">FALSE</a></li><li><a href="intercal.html" style="--f:#FFC0C0;--i:#000">INTERCAL</a></li><li><a href="rockstar.html" style="--f:#C0C0FF;--i:#000" aria-current=page>Rockstar</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#C0C0FF;--i:#000"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">Rockstar</h1><p class="band-line">Programs are written to read like the lyrics of a power ballad.</p><p class="band-by">By Dylan Beattie, 2018.</p></div><div class="band-glyph" aria-hidden="true"><p class="g g-txt g-rockstar">Tommy says Hello, World!
+Shout Tommy</p></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>Rockstar is a language whose programs look like rock lyrics, and are meant to be sung. It is esoteric in its aim, not its difficulty: under the lyrics it is an ordinary language with variables, loops and arithmetic, with some of the ordinary features given a rock-and-roll spelling.</p>
+<p>Two of these are the point. A <i>poetic number</i> is written as a sentence, and its digits are the lengths of the words: <code>a lean mean wrecking machine</code> is 14487. A <i>poetic string</i> is written with <code>says</code>, and everything after it is the text. Variables can have names like <code>Tommy</code>, <code>the music</code> or <code>Doctor Feelgood</code>.</p>
+<p>This site runs the part in the table. Conditionals, functions, arrays and the rest are not run here.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The lines used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Lines"><table>
+<thead><tr><th>Line</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>Tommy says Hello, World!</code></td><td>Give <code>Tommy</code> the text that follows (a poetic string)</td></tr>
+<tr><td><code>The music was a lean mean wrecking machine</code></td><td>Give a variable a number from word lengths (a poetic number)</td></tr>
+<tr><td><code>Put nothing into the crowd</code></td><td>Give a variable a value. <code>nothing</code> is 0</td></tr>
+<tr><td><code>Shout …</code>, <code>Say …</code>, <code>Whisper …</code></td><td>Print a value and a newline</td></tr>
+<tr><td><code>Build the crowd up</code> <code>Knock the crowd down</code></td><td>Add 1 to, or take 1 from, a variable</td></tr>
+<tr><td><code>While the crowd is less than 3</code></td><td>A loop, which runs until the next blank line. <code>is greater than</code> works too</td></tr>
+<tr><td><code>plus</code> <code>minus</code> <code>times</code> <code>over</code></td><td>Arithmetic</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">36 characters; it prints <code>Hello, World!<span class="nl">↵</span></code> in 2 steps. The first line sets the text and the second shouts it, so Hello World is two lines of verse.</p>
+<figure class="prog"><figcaption>hello.rock · 36 characters · <a href="programs/hello.rock" download>download</a></figcaption><pre tabindex="0" aria-label="Rockstar program"><code>Tommy says Hello, World!
+Shout Tommy</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.rock
+site/programs/hello.rock: &#x27;Hello, World!\n&#x27; in 2 steps</pre></figure>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A loop and a poetic number. It counts the crowd up to 3, shouts each, then shouts the music. It prints <code>1<span class="nl">↵</span>2<span class="nl">↵</span>3<span class="nl">↵</span>14487<span class="nl">↵</span></code> in 13 steps.</p>
+<figure class="prog"><figcaption>count.rock · <a href="programs/count.rock" download>download</a></figcaption><pre tabindex="0" aria-label="count.rock"><code>The music was a lean mean wrecking machine
+Put nothing into the crowd
+While the crowd is less than 3
+Build the crowd up
+Shout the crowd
+
+Shout the music</code></pre></figure><figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/count.rock
+&#x27;1\n2\n3\n14487\n&#x27; in 13 steps</pre></figure>
+<p class="prose">The blank line ends the loop, which is how Rockstar marks the end of a block. The last line sits outside it. <code>a lean mean wrecking machine</code> has words of 1, 4, 4, 8 and 7 letters, which is where the 14487 comes from.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/Rockstar">Esolang wiki: Rockstar</a></li><li><a href="https://codewithrockstar.com/">Rockstar: the official site</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="intercal.html"><span>Previous</span>INTERCAL</a><a href="scratch.html"><span>Next</span>Scratch</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

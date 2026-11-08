@@ -1,0 +1,50 @@
+{"title": "INTERCAL",
+ "description": "INTERCAL, the first esoteric language, refuses programs that are not polite enough. Its Hello World program, run here, takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>INTERCAL was written in 1972 by two students, as a language with nothing in common with the languages of its day. Its name is short for “Compiler Language With No Pronounceable Acronym”. Where other languages tried to be convenient, INTERCAL was built to be inconvenient in every way it could think of, which is what makes it the first esoteric language.</p>
+<p>It has no ordinary arithmetic: numbers are combined by interleaving and selecting their bits. It writes numbers out in Roman numerals. And it has a rule about manners: a statement may be marked <code>PLEASE</code>, and a program with too few of them is refused for not being polite enough, while one with too many is refused for grovelling.</p>
+<p>This site runs a small part: arrays, number variables set from constants, output, and the politeness rule. The bit-interleaving operators, <code>COME FROM</code> and the rest are not run here.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The statements used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Statements"><table>
+<thead><tr><th>Statement</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>DO</code>, <code>PLEASE DO</code></td><td>Begin every statement. <code>PLEASE</code> is for politeness; the <code>DO</code> after it may be left out</td></tr>
+<tr><td><code>DO ,1 &lt;- #13</code></td><td>Make array 1 with 13 elements. A name starting with a comma is an array</td></tr>
+<tr><td><code>DO ,1 SUB #3 &lt;- #112</code></td><td>Put 112 in the third element of array 1</td></tr>
+<tr><td><code>DO .1 &lt;- #1999</code></td><td>Put 1999 in the number variable <code>.1</code> (a dot is a 16-bit number; a colon, a 32-bit one)</td></tr>
+<tr><td><code>DO READ OUT ,1</code></td><td>Print an array as text, by the rule explained below</td></tr>
+<tr><td><code>DO READ OUT .1</code></td><td>Print a number in Roman numerals, then a newline</td></tr>
+<tr><td><code>DO GIVE UP</code></td><td>End the program</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">{{size}}; it prints {{output}} in {{steps}} steps, one for each statement. The output is <code>Hello, world!</code> with a small w and no newline.</p>
+{{program}}
+{{run}}
+<p class="prose">The numbers in the array are not the letters. To print an array, INTERCAL takes each element away from the previous result (the first from 0, wrapping round at 256), then writes the result’s eight bits in reverse order and prints that character. The first element, 238, takes away from 0 to give 18, which is 00010010; read backwards, that is 01001000, or 72, which is <code>H</code>.</p>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">Numbers print as Roman numerals. This second program sets one variable three times and prints it each time; it prints {{output2}} in {{steps2}} steps.</p>
+{{trace}}
+<p class="prose">Now the politeness rule. The Hello World above has 16 statements, and 4 of them say <code>PLEASE</code>: a quarter, which is within the allowed range of between a fifth and a third. Take the four <code>PLEASE</code>s out and this site’s build gets <code>E079 PROGRAMMER IS INSUFFICIENTLY POLITE</code>. Put one on every statement and it gets <code>E099 PROGRAMMER IS OVERLY POLITE</code>. The build checks both of these every time it runs.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}

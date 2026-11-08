@@ -75,6 +75,20 @@
     "line": "A tiny stack language with lambdas, made to have the smallest compiler possible.",
     "sources": [["Esolang wiki: FALSE", "https://esolangs.org/wiki/FALSE"]]
   },
+  "intercal": {
+    "name": "INTERCAL", "file": "hello.i", "field": [0, 0], "ink": "#000",
+    "by": "Don Woods and James Lyon", "year": 1972,
+    "line": "The first esoteric language: a parody of the languages of its day, which rejects programs that are not polite enough.",
+    "sources": [["Esolang wiki: INTERCAL", "https://esolangs.org/wiki/INTERCAL"],
+                ["Wikipedia: INTERCAL", "https://en.wikipedia.org/wiki/INTERCAL"]]
+  },
+  "rockstar": {
+    "name": "Rockstar", "file": "hello.rock", "field": [0, 4], "ink": "#000",
+    "by": "Dylan Beattie", "year": 2018,
+    "line": "Programs are written to read like the lyrics of a power ballad.",
+    "sources": [["Esolang wiki: Rockstar", "https://esolangs.org/wiki/Rockstar"],
+                ["Rockstar: the official site", "https://codewithrockstar.com/"]]
+  },
   "scratch": {
     "name": "Scratch", "file": null, "field": [1, 4], "ink": "#fff",
     "by": "the Lifelong Kindergarten group at the MIT Media Lab", "year": 2007,

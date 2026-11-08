@@ -9,9 +9,11 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import chef  # noqa: E402
 import falselang  # noqa: E402
+import intercal  # noqa: E402
 import langs  # noqa: E402
 import malbolge  # noqa: E402
 import piet  # noqa: E402
+import rockstar  # noqa: E402
 import spl  # noqa: E402
 import unlambda  # noqa: E402
 
@@ -26,6 +28,8 @@ RUNNERS = {
     '.spl': lambda p: spl.run(p.read_text(encoding='utf-8')),
     '.unl': lambda p: unlambda.run(p.read_text(encoding='utf-8')),
     '.false': lambda p: falselang.run(p.read_text(encoding='utf-8')),
+    '.i': lambda p: intercal.run(p.read_text(encoding='utf-8')),
+    '.rock': lambda p: rockstar.run(p.read_text(encoding='utf-8')),
     '.png': lambda p: piet.run(piet.from_png(p)),
 }
 
