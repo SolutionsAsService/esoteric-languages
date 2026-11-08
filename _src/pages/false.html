@@ -1,0 +1,50 @@
+{"title": "FALSE",
+ "description": "FALSE is a tiny stack language with lambdas, made to have the smallest compiler possible. Its Hello World program, run here, takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>FALSE is a stack language: numbers are pushed, and operators take their arguments off the stack and push the result. It also has lambdas, written in square brackets and kept on the stack until something applies them. It is small on purpose, and was written for the Amiga with a compiler of only 1024 bytes. Its design inspired <a href="brainfuck.html">Brainfuck</a>.</p>
+<p>True is −1 and false is 0. A one-letter name is a variable: <code>x</code> names it, <code>:</code> stores a value there and <code>;</code> fetches it. A loop is a condition lambda, a body lambda and a <code>#</code>.</p>
+<p>This site runs the core of the language: the stack, lambdas, variables, loops and printing. The programs here take no input.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The symbols used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Symbols"><table>
+<thead><tr><th>Written</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>5</code>, <code>48</code></td><td>Push the number</td></tr>
+<tr><td><code>"text"</code></td><td>Print the text</td></tr>
+<tr><td><code>,</code> <code>.</code></td><td>Print the top as a character, or as a number</td></tr>
+<tr><td><code>$</code> <code>%</code></td><td>Duplicate the top, or drop it</td></tr>
+<tr><td><code>+</code> <code>-</code> <code>&gt;</code></td><td>Add, subtract, greater than</td></tr>
+<tr><td><code>[ … ]</code></td><td>A lambda: push the code without running it</td></tr>
+<tr><td><code>!</code></td><td>Run the lambda on top of the stack</td></tr>
+<tr><td><code>#</code></td><td>While: runs the condition lambda, then the body lambda, until the condition gives 0</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">{{size}}; it prints {{output}} in {{steps}} steps: push the lambda, run it, print the text inside it, push 10, print that as a character, which is the newline.</p>
+{{program}}
+{{run}}
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A loop, counting down from 5. It prints {{output2}} in {{steps2}} steps.</p>
+{{trace}}
+<p class="prose">The condition lambda <code>$0&gt;</code> copies the number and asks whether it is more than 0. The body <code>$48+,1-</code> copies it, adds 48 to turn it into a digit’s character code, prints that, and takes 1 off. When the number reaches 0 the condition fails, and <code>%</code> drops it. Most of the steps are the loop: every pass runs the condition and the body again.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}

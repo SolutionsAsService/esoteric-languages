@@ -25,7 +25,7 @@
 <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
 <nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html" aria-current=page>About</a></li></ul></nav>
 </header>
-<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000">Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000">Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff">Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000">FALSE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
 <main id="main">
 <header class="band" style="--f:#FFFFFF;--i:#000">
 <div class="band-text"><p class="kicker">About</p><h1 id="top">How this site knows</h1>
@@ -56,9 +56,13 @@ $ python _src/eso/run.py site/programs/hello.bf site/programs/hello-piet.png</pr
 <tr><td><a href="piet.html">Piet</a></td><td>One move from one colour block to another</td><td>26</td></tr>
 <tr><td><a href="malbolge.html">Malbolge</a></td><td>One instruction, including those that do nothing</td><td>40</td></tr>
 <tr><td><a href="lolcode.html">LOLCODE</a></td><td>One statement, not counting <code>HAI</code> and <code>KTHXBYE</code></td><td>1</td></tr>
+<tr><td><a href="chef.html">Chef</a></td><td>One method sentence executed; a loop’s opening and closing sentences count each time they are reached</td><td>14</td></tr>
+<tr><td><a href="shakespeare.html">Shakespeare</a></td><td>One spoken sentence, including one skipped by “If so” or “If not”; stage directions and scene headings do not count</td><td>27</td></tr>
+<tr><td><a href="unlambda.html">Unlambda</a></td><td>One function application (one backtick evaluated)</td><td>14</td></tr>
+<tr><td><a href="false.html">FALSE</a></td><td>One token executed: a number, string, operator or lambda; a loop’s tokens count every time round</td><td>5</td></tr>
 <tr><td><a href="scratch.html">Scratch</a></td><td>Not run; the poster counts blocks</td><td>2 blocks</td></tr>
 </tbody></table></div>
-<p class="prose">The counts are not comparable across languages: one LOLCODE step is a whole statement, one Brainfuck step a single character. Read each number as what that program cost in its own language, not as a ranking. The outputs differ slightly too: the Brainfuck, Ook! and Malbolge programs print <code>Hello World!</code> without the comma, as they were written.</p>
+<p class="prose">The counts are not comparable across languages: one LOLCODE step is a whole statement, one Brainfuck step a single character. Read each number as what that program cost in its own language, not as a ranking. The outputs differ slightly too: the Brainfuck, Ook! and Malbolge programs print <code>Hello World!</code> without the comma, as they were written, and the Chef recipe prints <code>Hello world!</code>, as the usual Chef example does.</p>
 </section>
 
 <section class="section" aria-labelledby="design-h">

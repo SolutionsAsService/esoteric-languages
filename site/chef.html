@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chef · Esoteric Languages</title>
+<meta name="description" content="Chef programs are recipes: ingredients hold the numbers and mixing bowls are stacks. Its Hello World recipe, run here, takes 14 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/chef">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chef · Esoteric Languages">
+<meta property="og:description" content="Chef programs are recipes: ingredients hold the numbers and mixing bowls are stacks. Its Hello World recipe, run here, takes 14 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/chef">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-chef">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000" aria-current=page>Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000">Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff">Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000">FALSE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#00FFFF;--i:#000"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">Chef</h1><p class="band-line">A program is a recipe: ingredients hold the numbers and mixing bowls are the stacks.</p><p class="band-by">By David Morgan-Mar, 2002.</p></div><div class="band-glyph" aria-hidden="true"><p class="g g-txt g-chef">Ingredients.
+72 g haricot beans
+101 eggs
+108 g lard
+111 ml oil
+32 zests
+119 ml water
+114 g red salmon
+100 g dijon mustard
+33 potatoes</p></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>A Chef program is a recipe. The ingredients are variables, each with an amount, and the method is the program. Mixing bowls and baking dishes are stacks: you put ingredients into a bowl, pour the bowl into a dish, and what is in the dish when the recipe ends is what the program prints. The specification also asks that a program be a good recipe.</p>
+<p>Whether a number comes out as a number or a letter depends on the measure. Dry ingredients (grams, pinches) print as numbers; liquid ones (millilitres, dashes) print as characters, and <code>Liquefy</code> turns dry into liquid. That is how a recipe full of eggs and lard says “Hello”.</p>
+<p>This site runs a part of Chef: the instructions in the table. Auxiliary recipes and the random <code>Mix</code> are not supported.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The instructions used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Instructions"><table>
+<thead><tr><th>Sentence</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>Put <i>x</i> into the mixing bowl.</code></td><td>Push the value of ingredient <i>x</i> onto the bowl</td></tr>
+<tr><td><code>Fold <i>x</i> into the mixing bowl.</code></td><td>Pop the top of the bowl into ingredient <i>x</i></td></tr>
+<tr><td><code>Add <i>x</i>.</code> <code>Remove <i>x</i>.</code></td><td>Add to, or subtract from, the top of the bowl the value of <i>x</i></td></tr>
+<tr><td><code>Combine <i>x</i>.</code> <code>Divide <i>x</i>.</code></td><td>Multiply, or integer-divide, the top of the bowl by <i>x</i></td></tr>
+<tr><td><code>Liquefy contents of the mixing bowl.</code></td><td>Make everything in the bowl liquid, so it prints as characters</td></tr>
+<tr><td><code>Pour contents of the mixing bowl into the baking dish.</code></td><td>Copy the bowl to the dish, keeping the order</td></tr>
+<tr><td><code>Verb the <i>x</i>.</code> … <code>Verb the <i>x</i> until verbed.</code></td><td>A loop: it runs while <i>x</i> is not zero, and the closing line takes 1 off <i>x</i></td></tr>
+<tr><td><code>Serves 1.</code></td><td>Print the first baking dish, from the top down</td></tr>
+</tbody></table></div>
+<p class="prose">Numbered bowls and dishes (<code>the 2nd mixing bowl</code>), <code>Take</code>, <code>Stir</code>, <code>Clean</code> and <code>Set aside</code> also work; the programs here do not need them.</p>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">749 characters; it prints <code>Hello world!</code> in 14 steps, one for each method sentence. The words are the usual Chef example, so the output is <code>Hello world!</code> with a small w and no newline.</p>
+<figure class="prog"><figcaption>hello.chef · 749 characters · <a href="programs/hello.chef" download>download</a></figcaption><pre tabindex="0" aria-label="Chef program"><code>Hello World Souffle.
+
+This recipe prints the words &quot;Hello world!&quot; one letter at a time. It serves one.
+
+Ingredients.
+72 g haricot beans
+101 eggs
+108 g lard
+111 ml oil
+32 zests
+119 ml water
+114 g red salmon
+100 g dijon mustard
+33 potatoes
+
+Method.
+Put potatoes into the mixing bowl. Put dijon mustard into the mixing bowl. Put lard into the mixing bowl. Put red salmon into the mixing bowl. Put oil into the mixing bowl. Put water into the mixing bowl. Put zests into the mixing bowl. Put oil into the mixing bowl. Put lard into the mixing bowl. Put lard into the mixing bowl. Put eggs into the mixing bowl. Put haricot beans into the mixing bowl. Liquefy contents of the mixing bowl. Pour contents of the mixing bowl into the baking dish.
+
+Serves 1.</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.chef
+site/programs/hello.chef: &#x27;Hello world!&#x27; in 14 steps</pre></figure>
+<p class="prose">The recipe pushes the letters last-to-first, because a stack gives back the last thing put in. <code>Liquefy</code> then turns the whole bowl into characters, and the dish is printed from the top: H, then e, and so on. The ingredient called <code>zests</code> has no measure, and is the space.</p>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A loop, to count down from C to A: the flour is the counter, starting at 3, and each time round puts the current letter in the bowl and takes 1 off it. It prints <code>ABC</code> in 20 steps.</p>
+<figure class="prog"><figcaption>alphabet.chef · <a href="programs/alphabet.chef" download>download</a></figcaption><pre tabindex="0" aria-label="alphabet.chef"><code>Alphabet Loaf.
+
+A loop: counts down from C to A, one letter a turn, and serves them in order.
+
+Ingredients.
+3 g flour
+1 g sugar
+67 ml letters
+
+Method.
+Bake the flour. Put letters into the mixing bowl. Put letters into the mixing bowl. Remove sugar. Fold letters into the mixing bowl. Bake the flour until baked. Pour contents of the mixing bowl into the baking dish.
+
+Serves 1.</code></pre></figure><figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/alphabet.chef
+&#x27;ABC&#x27; in 20 steps</pre></figure>
+<p class="prose">The letters go in as C, B, A, so A is on top and prints first. The letters are liquid (<code>ml</code>), so they print as characters; the flour and sugar are dry and never reach the dish.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://www.dangermouse.net/esoteric/chef.html">David Morgan-Mar: Chef</a></li><li><a href="https://esolangs.org/wiki/Chef">Esolang wiki: Chef</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="lolcode.html"><span>Previous</span>LOLCODE</a><a href="shakespeare.html"><span>Next</span>Shakespeare</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

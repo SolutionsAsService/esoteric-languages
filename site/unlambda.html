@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unlambda · Esoteric Languages</title>
+<meta name="description" content="Unlambda has no variables and no loops, only functions applied to functions. Its Hello World program, run here, takes 14 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/unlambda">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Unlambda · Esoteric Languages">
+<meta property="og:description" content="Unlambda has no variables and no loops, only functions applied to functions. Its Hello World program, run here, takes 14 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/unlambda">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-unlambda">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000">Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000">Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff" aria-current=page>Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000">FALSE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#C000C0;--i:#fff"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">Unlambda</h1><p class="band-line">No variables and no loops: only functions applied to functions.</p><p class="band-by">By David Madore, 1999.</p></div><div class="band-glyph" aria-hidden="true"><p class="g g-txt g-unlambda">`r`````````````.H.e.l.l.o.,. .W.o.r.l.d.!i</p></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>Unlambda is a language of functions and nothing else. There are no variables, no numbers and no loops. A program is one expression, written in prefix form: a backtick means “apply the function after me to the one after that”. Everything is computed by applying functions to functions.</p>
+<p>It is built from a handful of functions. <code>k</code> and <code>s</code> are the two combinators that, between them, can build any function; <code>i</code> returns what it is given. For output there is <code>.x</code>, which prints the character <code>x</code> when it is applied, and <code>r</code>, which prints a newline.</p>
+<p>This site runs <code>`</code>, <code>s</code>, <code>k</code>, <code>i</code>, <code>v</code>, <code>d</code>, <code>r</code> and <code>.x</code>. The rest of the language (<code>c</code>, <code>e</code>, <code>@</code>, <code>?x</code> and <code>|</code>) is not run here.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The functions used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Functions"><table>
+<thead><tr><th>Written</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>`</code></td><td>Apply the next expression to the one after it</td></tr>
+<tr><td><code>i</code></td><td>Identity: gives back its argument</td></tr>
+<tr><td><code>k</code></td><td><code>`kx</code> is a function that ignores its argument and gives back <i>x</i></td></tr>
+<tr><td><code>s</code></td><td><code>```sxyz</code> is <code>``xz`yz</code></td></tr>
+<tr><td><code>.x</code></td><td>Print the character <i>x</i>, and give back the argument</td></tr>
+<tr><td><code>r</code></td><td>Print a newline, and give back the argument</td></tr>
+<tr><td><code>v</code></td><td>Gives back <code>v</code>, whatever it is applied to</td></tr>
+<tr><td><code>d</code></td><td>Delays the next expression until it is applied</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">42 characters; it prints <code>Hello, World!<span class="nl">↵</span></code> in 14 steps, one for each backtick, which is each application. It reads left to right: apply <code>.H</code> to <code>.e</code>, which prints <code>H</code> and gives back <code>.e</code>; apply that to <code>.l</code>, which prints <code>e</code>; and so on to the final <code>i</code>. The last step, <code>r</code>, prints the newline.</p>
+<figure class="prog"><figcaption>hello.unl · 42 characters · <a href="programs/hello.unl" download>download</a></figcaption><pre tabindex="0" aria-label="Unlambda program"><code>`r`````````````.H.e.l.l.o.,. .W.o.r.l.d.!i</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.unl
+site/programs/hello.unl: &#x27;Hello, World!\n&#x27; in 14 steps</pre></figure>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A smaller one, to show the combinators working: <code>skk</code> is the identity function, built from <code>s</code> and <code>k</code> alone. Applied to <code>.a</code> it gives back <code>.a</code>, and one more application to <code>i</code> prints the character. It prints <code>a</code> in 7 steps.</p>
+<figure class="prog"><figcaption>skk.unl · <a href="programs/skk.unl" download>download</a></figcaption><pre tabindex="0" aria-label="skk.unl"><code>````skk.ai</code></pre></figure><figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/skk.unl
+&#x27;a&#x27; in 7 steps</pre></figure>
+<p class="prose">Seven applications to do what <code>i</code> does in one: that is the cost of building everything from <code>s</code> and <code>k</code>. The functions are never named, only applied.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/Unlambda">Esolang wiki: Unlambda</a></li><li><a href="https://en.wikipedia.org/wiki/Unlambda">Wikipedia: Unlambda</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="shakespeare.html"><span>Previous</span>Shakespeare</a><a href="false.html"><span>Next</span>FALSE</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

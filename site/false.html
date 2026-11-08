@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FALSE · Esoteric Languages</title>
+<meta name="description" content="FALSE is a tiny stack language with lambdas, made to have the smallest compiler possible. Its Hello World program, run here, takes 5 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/false">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FALSE · Esoteric Languages">
+<meta property="og:description" content="FALSE is a tiny stack language with lambdas, made to have the smallest compiler possible. Its Hello World program, run here, takes 5 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/false">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-false">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000">Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000">Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff">Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000" aria-current=page>FALSE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#00C000;--i:#000"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">FALSE</h1><p class="band-line">A tiny stack language with lambdas, made to have the smallest compiler possible.</p><p class="band-by">By Wouter van Oortmerssen, 1993.</p></div><div class="band-glyph" aria-hidden="true"><p class="g g-txt g-false">[&quot;Hello, World!&quot;]!10,</p></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>FALSE is a stack language: numbers are pushed, and operators take their arguments off the stack and push the result. It also has lambdas, written in square brackets and kept on the stack until something applies them. It is small on purpose, and was written for the Amiga with a compiler of only 1024 bytes. Its design inspired <a href="brainfuck.html">Brainfuck</a>.</p>
+<p>True is −1 and false is 0. A one-letter name is a variable: <code>x</code> names it, <code>:</code> stores a value there and <code>;</code> fetches it. A loop is a condition lambda, a body lambda and a <code>#</code>.</p>
+<p>This site runs the core of the language: the stack, lambdas, variables, loops and printing. The programs here take no input.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The symbols used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Symbols"><table>
+<thead><tr><th>Written</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>5</code>, <code>48</code></td><td>Push the number</td></tr>
+<tr><td><code>"text"</code></td><td>Print the text</td></tr>
+<tr><td><code>,</code> <code>.</code></td><td>Print the top as a character, or as a number</td></tr>
+<tr><td><code>$</code> <code>%</code></td><td>Duplicate the top, or drop it</td></tr>
+<tr><td><code>+</code> <code>-</code> <code>&gt;</code></td><td>Add, subtract, greater than</td></tr>
+<tr><td><code>[ … ]</code></td><td>A lambda: push the code without running it</td></tr>
+<tr><td><code>!</code></td><td>Run the lambda on top of the stack</td></tr>
+<tr><td><code>#</code></td><td>While: runs the condition lambda, then the body lambda, until the condition gives 0</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">21 characters; it prints <code>Hello, World!<span class="nl">↵</span></code> in 5 steps: push the lambda, run it, print the text inside it, push 10, print that as a character, which is the newline.</p>
+<figure class="prog"><figcaption>hello.false · 21 characters · <a href="programs/hello.false" download>download</a></figcaption><pre tabindex="0" aria-label="FALSE program"><code>[&quot;Hello, World!&quot;]!10,</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.false
+site/programs/hello.false: &#x27;Hello, World!\n&#x27; in 5 steps</pre></figure>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A loop, counting down from 5. It prints <code>54321<span class="nl">↵</span></code> in 55 steps.</p>
+<figure class="prog"><figcaption>countdown.false · <a href="programs/countdown.false" download>download</a></figcaption><pre tabindex="0" aria-label="countdown.false"><code>5[$0&gt;][$48+,1-]#%10,</code></pre></figure><figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/countdown.false
+&#x27;54321\n&#x27; in 55 steps</pre></figure>
+<p class="prose">The condition lambda <code>$0&gt;</code> copies the number and asks whether it is more than 0. The body <code>$48+,1-</code> copies it, adds 48 to turn it into a digit’s character code, prints that, and takes 1 off. When the number reaches 0 the condition fails, and <code>%</code> drops it. Most of the steps are the loop: every pass runs the condition and the body again.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/FALSE">Esolang wiki: FALSE</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="unlambda.html"><span>Previous</span>Unlambda</a><a href="scratch.html"><span>Next</span>Scratch</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

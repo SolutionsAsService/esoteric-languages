@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakespeare · Esoteric Languages</title>
+<meta name="description" content="A Shakespeare program is a play: characters are variables and compliments are numbers. Its Hello World play, run here, takes 27 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/shakespeare">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shakespeare · Esoteric Languages">
+<meta property="og:description" content="A Shakespeare program is a play: characters are variables and compliments are numbers. Its Hello World play, run here, takes 27 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/shakespeare">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-shakespeare">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000">Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000" aria-current=page>Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff">Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000">FALSE</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#C0C000;--i:#000"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">Shakespeare</h1><p class="band-line">A program is a play: the characters are variables, and a kind word is worth more than an unkind one.</p><p class="band-by">By Karl Wiberg and Jon Åslund, 2001.</p></div><div class="band-glyph" aria-hidden="true"><p class="g g-txt g-shakespeare">Romeo:
+You are the sum of a big big big cat and a big big big big big big cat! Speak your mind!
+Romeo:
+You are the sum of the difference between the sum of yourself and a cat and a big big cat and a big big big big big cat! Speak your mind!
+Romeo:
+You are the sum of the difference between yourself and a cat and a big big big cat! Speak your mind!
+Romeo:
+Speak your mind!
+Romeo:
+You are the sum of the difference between yourself and a cat and a big big cat! Speak your mind!
+Romeo:
+You are the difference between the difference between the sum of yourself and a cat and a big big cat and a big big big big big big cat! Speak your mind!
+Romeo:
+You are the difference between the sum of yourself and a big big cat and a big big big big cat! Speak your mind!
+Romeo:
+You are the sum of the difference between the difference between yourself and a cat and a big big big cat and a big big big big big big cat! Speak your mind!
+Romeo:
+You are the sum of the difference between yourself and a big big big cat and a big big big big big cat! Speak your mind!
+Romeo:
+You are the sum of the difference between yourself and a cat and a big big cat! Speak your mind!
+Romeo:
+You are the difference between the sum of yourself and a big cat and a big big big cat! Speak your mind!
+Romeo:
+You are the difference between yourself and a big big big cat! Speak your mind!
+Romeo:
+You are the difference between the difference between the sum of yourself and a cat and a big big cat and a big big big big big big cat! Speak your mind!
+Romeo:
+You are the difference between the sum of the sum of yourself and a cat and a big big big cat and a big big big big big cat! Speak your mind!
+[Exeunt]</p></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>The Shakespeare Programming Language (SPL) writes a program as a play. A title, a list of characters, then acts and scenes in which the characters come on stage and speak to one another. Each character is a variable holding a whole number, and what they say to each other changes those numbers.</p>
+<p>Numbers are written as nouns. Every noun is worth 1, or −1 if it is an insult, and each adjective in front of it doubles the value. So <code>a big big big cat</code> is 8, and <code>the sum of a big big big cat and a cat</code> is 9. Big numbers need long sentences, which is part of the joke.</p>
+<p>A line spoken to the one other character on stage changes that character’s value. This site runs a part of SPL; the word lists are a subset of the specification’s, and a play with other words is refused instead of guessed at.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The lines used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Lines"><table>
+<thead><tr><th>Said by one character to the other</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>[Enter Romeo and Juliet]</code></td><td>A stage direction: who is on stage</td></tr>
+<tr><td><code>You are the sum of … and …</code></td><td>Give the listener a new value. Also the difference between, the product of, the quotient between</td></tr>
+<tr><td><code>yourself</code>, <code>me</code></td><td>The listener’s value, and the speaker’s</td></tr>
+<tr><td><code>Speak your mind!</code></td><td>The listener prints their value as a character</td></tr>
+<tr><td><code>Open your heart!</code></td><td>The listener prints their value as a number</td></tr>
+<tr><td><code>Are you better than me?</code></td><td>Ask whether the listener is greater. <code>worse</code> asks if they are less, <code>not</code> turns it round</td></tr>
+<tr><td><code>If so, …</code> <code>If not, …</code></td><td>Do the next part only if the last question was answered yes, or no</td></tr>
+<tr><td><code>Let us return to scene II.</code></td><td>Jump to another scene or act</td></tr>
+<tr><td><code>Remember …</code> <code>Recall …</code></td><td>Push to, and pop from, the listener’s stack</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">1942 characters; it prints <code>Hello, World!<span class="nl">↵</span></code> in 27 steps, one for each sentence spoken. Only Romeo talks. Each line gives Juliet the next letter’s code, reached from the last by adding or taking away powers of two, and then asks her to say it. A line that is only <code>Speak your mind!</code> repeats the letter, as the two l’s and the second o need.</p>
+<figure class="prog"><figcaption>hello.spl · 1942 characters · <a href="programs/hello.spl" download>download</a></figcaption><pre tabindex="0" aria-label="Shakespeare program"><code>The Hello World Tragedy.
+
+Romeo, a young man with a plan.
+Juliet, a girl who repeats whatever she is told.
+
+                    Act I: The Greeting.
+
+                    Scene I: Every letter in turn.
+
+[Enter Romeo and Juliet]
+
+Romeo:
+  You are the sum of a big big big cat and a big big big big big big cat! Speak your mind!
+
+Romeo:
+  You are the sum of the difference between the sum of yourself and a cat and a big big cat and a big big big big big cat! Speak your mind!
+
+Romeo:
+  You are the sum of the difference between yourself and a cat and a big big big cat! Speak your mind!
+
+Romeo:
+  Speak your mind!
+
+Romeo:
+  You are the sum of the difference between yourself and a cat and a big big cat! Speak your mind!
+
+Romeo:
+  You are the difference between the difference between the sum of yourself and a cat and a big big cat and a big big big big big big cat! Speak your mind!
+
+Romeo:
+  You are the difference between the sum of yourself and a big big cat and a big big big big cat! Speak your mind!
+
+Romeo:
+  You are the sum of the difference between the difference between yourself and a cat and a big big big cat and a big big big big big big cat! Speak your mind!
+
+Romeo:
+  You are the sum of the difference between yourself and a big big big cat and a big big big big big cat! Speak your mind!
+
+Romeo:
+  You are the sum of the difference between yourself and a cat and a big big cat! Speak your mind!
+
+Romeo:
+  You are the difference between the sum of yourself and a big cat and a big big big cat! Speak your mind!
+
+Romeo:
+  You are the difference between yourself and a big big big cat! Speak your mind!
+
+Romeo:
+  You are the difference between the difference between the sum of yourself and a cat and a big big cat and a big big big big big big cat! Speak your mind!
+
+Romeo:
+  You are the difference between the sum of the sum of yourself and a cat and a big big big cat and a big big big big big cat! Speak your mind!
+
+[Exeunt]</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.spl
+site/programs/hello.spl: &#x27;Hello, World!\n&#x27; in 27 steps</pre></figure>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A loop, to count out letters. Juliet starts at 65, which is A, and Romeo holds 69, which is E. Romeo has Juliet speak, adds one to her, and asks whether she is now better than him; if not, the play returns to the scene. It prints <code>ABCDE</code> in 22 steps.</p>
+<figure class="prog"><figcaption>letters.spl · <a href="programs/letters.spl" download>download</a></figcaption><pre tabindex="0" aria-label="letters.spl"><code>The Counting Tragedy.
+
+Romeo, who knows where to stop.
+Juliet, who counts the letters.
+
+                    Act I: The Count.
+
+                    Scene I: Setting out.
+
+[Enter Romeo and Juliet]
+
+Juliet:
+  You are the sum of the sum of a big big big big big big cat and a big big cat and a cat!
+Romeo:
+  You are the sum of a big big big big big big cat and a cat!
+
+                    Scene II: One letter, then the next.
+
+Romeo:
+  Speak your mind!
+  You are the sum of yourself and a cat.
+  Are you not better than me?
+  If so, let us return to scene II.
+
+[Exeunt]</code></pre></figure><figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/letters.spl
+&#x27;ABCDE&#x27; in 22 steps</pre></figure>
+<p class="prose">Scene I sets the two values, and scene II is the loop. The jump back is the only repetition: SPL has no loop keyword, only <code>Let us return to</code>. Each pass is four sentences, and the last pass skips the jump because Juliet is by then better than Romeo.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/Shakespeare">Esolang wiki: Shakespeare</a></li><li><a href="https://en.wikipedia.org/wiki/Shakespeare_Programming_Language">Wikipedia: Shakespeare Programming Language</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="chef.html"><span>Previous</span>Chef</a><a href="unlambda.html"><span>Next</span>Unlambda</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>
