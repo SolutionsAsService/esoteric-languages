@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INTERCAL · Esoteric Languages</title>
+<meta name="description" content="INTERCAL, the first esoteric language, refuses programs that are not polite enough. Its Hello World program, run here, takes 16 steps.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/intercal">
+<meta property="og:type" content="website">
+<meta property="og:title" content="INTERCAL · Esoteric Languages">
+<meta property="og:description" content="INTERCAL, the first esoteric language, refuses programs that are not polite enough. Its Hello World program, run here, takes 16 steps.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/intercal">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-intercal">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000">Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000">Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff">Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000">FALSE</a></li><li><a href="intercal.html" style="--f:#FFC0C0;--i:#000" aria-current=page>INTERCAL</a></li><li><a href="rockstar.html" style="--f:#C0C0FF;--i:#000">Rockstar</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#FFC0C0;--i:#000"><div class="band-text"><p class="kicker">Esoteric language</p><h1 id="top">INTERCAL</h1><p class="band-line">The first esoteric language: a parody of the languages of its day, which rejects programs that are not polite enough.</p><p class="band-by">By Don Woods and James Lyon, 1972.</p></div><div class="band-glyph" aria-hidden="true"><p class="g g-txt g-intercal">DO ,1 &lt;- #13
+PLEASE DO ,1 SUB #1 &lt;- #238
+DO ,1 SUB #2 &lt;- #108
+DO ,1 SUB #3 &lt;- #112
+DO ,1 SUB #4 &lt;- #0
+DO ,1 SUB #5 &lt;- #64
+DO ,1 SUB #6 &lt;- #194
+DO ,1 SUB #7 &lt;- #48
+PLEASE DO ,1 SUB #8 &lt;- #22
+DO ,1 SUB #9 &lt;- #248
+DO ,1 SUB #10 &lt;- #168
+DO ,1 SUB #11 &lt;- #24
+DO ,1 SUB #12 &lt;- #16
+DO ,1 SUB #13 &lt;- #162
+PLEASE READ OUT ,1
+PLEASE GIVE UP</p></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>INTERCAL was written in 1972 by two students, as a language with nothing in common with the languages of its day. Its name is short for “Compiler Language With No Pronounceable Acronym”. Where other languages tried to be convenient, INTERCAL was built to be inconvenient in every way it could think of, which is what makes it the first esoteric language.</p>
+<p>It has no ordinary arithmetic: numbers are combined by interleaving and selecting their bits. It writes numbers out in Roman numerals. And it has a rule about manners: a statement may be marked <code>PLEASE</code>, and a program with too few of them is refused for not being polite enough, while one with too many is refused for grovelling.</p>
+<p>This site runs a small part: arrays, number variables set from constants, output, and the politeness rule. The bit-interleaving operators, <code>COME FROM</code> and the rest are not run here.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The statements used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Statements"><table>
+<thead><tr><th>Statement</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>DO</code>, <code>PLEASE DO</code></td><td>Begin every statement. <code>PLEASE</code> is for politeness; the <code>DO</code> after it may be left out</td></tr>
+<tr><td><code>DO ,1 &lt;- #13</code></td><td>Make array 1 with 13 elements. A name starting with a comma is an array</td></tr>
+<tr><td><code>DO ,1 SUB #3 &lt;- #112</code></td><td>Put 112 in the third element of array 1</td></tr>
+<tr><td><code>DO .1 &lt;- #1999</code></td><td>Put 1999 in the number variable <code>.1</code> (a dot is a 16-bit number; a colon, a 32-bit one)</td></tr>
+<tr><td><code>DO READ OUT ,1</code></td><td>Print an array as text, by the rule explained below</td></tr>
+<tr><td><code>DO READ OUT .1</code></td><td>Print a number in Roman numerals, then a newline</td></tr>
+<tr><td><code>DO GIVE UP</code></td><td>End the program</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">330 characters; it prints <code>Hello, world!</code> in 16 steps, one for each statement. The output is <code>Hello, world!</code> with a small w and no newline.</p>
+<figure class="prog"><figcaption>hello.i · 330 characters · <a href="programs/hello.i" download>download</a></figcaption><pre tabindex="0" aria-label="INTERCAL program"><code>DO ,1 &lt;- #13
+PLEASE DO ,1 SUB #1 &lt;- #238
+DO ,1 SUB #2 &lt;- #108
+DO ,1 SUB #3 &lt;- #112
+DO ,1 SUB #4 &lt;- #0
+DO ,1 SUB #5 &lt;- #64
+DO ,1 SUB #6 &lt;- #194
+DO ,1 SUB #7 &lt;- #48
+PLEASE DO ,1 SUB #8 &lt;- #22
+DO ,1 SUB #9 &lt;- #248
+DO ,1 SUB #10 &lt;- #168
+DO ,1 SUB #11 &lt;- #24
+DO ,1 SUB #12 &lt;- #16
+DO ,1 SUB #13 &lt;- #162
+PLEASE READ OUT ,1
+PLEASE GIVE UP</code></pre></figure>
+<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/hello.i
+site/programs/hello.i: &#x27;Hello, world!&#x27; in 16 steps</pre></figure>
+<p class="prose">The numbers in the array are not the letters. To print an array, INTERCAL takes each element away from the previous result (the first from 0, wrapping round at 256), then writes the result’s eight bits in reverse order and prints that character. The first element, 238, takes away from 0 to give 18, which is 00010010; read backwards, that is 01001000, or 72, which is <code>H</code>.</p>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">Numbers print as Roman numerals. This second program sets one variable three times and prints it each time; it prints <code>I<span class="nl">↵</span>MCMXCIX<span class="nl">↵</span>V<span class="nl">↵</span></code> in 7 steps.</p>
+<figure class="prog"><figcaption>roman.i · <a href="programs/roman.i" download>download</a></figcaption><pre tabindex="0" aria-label="roman.i"><code>DO .1 &lt;- #1
+PLEASE READ OUT .1
+DO .1 &lt;- #1999
+DO READ OUT .1
+DO .1 &lt;- #5
+PLEASE READ OUT .1
+DO GIVE UP</code></pre></figure><figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">$ python _src/eso/run.py site/programs/roman.i
+&#x27;I\nMCMXCIX\nV\n&#x27; in 7 steps</pre></figure>
+<p class="prose">Now the politeness rule. The Hello World above has 16 statements, and 4 of them say <code>PLEASE</code>: a quarter, which is within the allowed range of between a fifth and a third. Take the four <code>PLEASE</code>s out and this site’s build gets <code>E079 PROGRAMMER IS INSUFFICIENTLY POLITE</code>. Put one on every statement and it gets <code>E099 PROGRAMMER IS OVERLY POLITE</code>. The build checks both of these every time it runs.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://esolangs.org/wiki/INTERCAL">Esolang wiki: INTERCAL</a></li><li><a href="https://en.wikipedia.org/wiki/INTERCAL">Wikipedia: INTERCAL</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="false.html"><span>Previous</span>FALSE</a><a href="rockstar.html"><span>Next</span>Rockstar</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

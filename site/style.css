@@ -39,17 +39,18 @@ code, pre { font-family: var(--mono); }
 .chips a:focus-visible { outline: 4px solid var(--i); outline-offset: -8px; }
 
 /* ---- the poster (M3): one field per language on Mondrian's black bars */
-.hero { display: flex; flex-direction: column; height: max(calc(100svh - var(--mast)), 900px); background: #000; }
+.hero { display: flex; flex-direction: column; height: max(calc(100svh - var(--mast)), 1120px); background: #000; }
 .hero h1 { margin: 0; padding: 14px 16px 12px; background: var(--paper); border-bottom: var(--bar) solid #000;
   font: 900 clamp(30px, 4.6vw, 64px)/1 var(--sans); font-stretch: 62%; letter-spacing: -.01em; }
 .hero h1 small { display: inline-block; margin-left: .6rem; font: 400 clamp(14px, 1.35vw, 19px)/1.3 var(--sans);
   font-stretch: 100%; letter-spacing: 0; vertical-align: middle; max-width: 34em; }
 .poster { flex: 1; min-height: 0; list-style: none; margin: 0; padding: 0; display: grid; gap: var(--bar);
-  grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+  grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr)); }
 .t-brainfuck { grid-column: span 3; } .t-ook { grid-column: span 2; } .t-befunge { grid-column: span 4; }
 .t-whitespace { grid-column: span 3; } .t-piet { grid-column: span 5; } .t-malbolge { grid-column: span 3; }
 .t-lolcode { grid-column: span 2; } .t-chef { grid-column: span 2; }
-.t-shakespeare, .t-unlambda, .t-false, .t-scratch { grid-column: span 3; }
+.t-shakespeare, .t-unlambda, .t-false, .t-intercal { grid-column: span 3; }
+.t-rockstar, .t-scratch { grid-column: span 6; }
 .tile { min-width: 0; min-height: 0; }
 .tile a { display: flex; flex-direction: column; height: 100%; padding: 14px 16px 12px; overflow: hidden;
   background: var(--f); color: var(--i); text-decoration: none; }
@@ -163,10 +164,10 @@ td code { white-space: nowrap; }
   :root { --bar: 6px; --mast: 56px; }
   .top ul { gap: .9rem; }
   .brand span { font-size: 13px; }
-  .hero { height: 1500px; }
+  .hero { height: 1750px; }
   .hero h1 { padding: 10px 16px 9px; font-size: 30px; }
   .hero h1 small { display: block; margin: .3rem 0 0; font-size: 14px; }
-  .poster { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); }
+  .poster { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(7, minmax(0, 1fr)); }
   .poster .tile { grid-column: span 1; }
   .tile a { padding: 9px 10px 8px; }
   .t-name { font-size: 18px; }

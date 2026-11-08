@@ -17,9 +17,11 @@ OUT = ROOT / 'site'
 sys.path.insert(0, str(SRC / 'eso'))
 import chef  # noqa: E402
 import falselang  # noqa: E402
+import intercal  # noqa: E402
 import langs  # noqa: E402
 import malbolge  # noqa: E402
 import piet  # noqa: E402
+import rockstar  # noqa: E402
 import run as runner  # noqa: E402
 import spl  # noqa: E402
 import unlambda  # noqa: E402
@@ -45,6 +47,8 @@ EXPECT = {
     'shakespeare': ('Hello, World!\n', 27),
     'unlambda': ('Hello, World!\n', 14),
     'false': ('Hello, World!\n', 5),
+    'intercal': ('Hello, world!', 16),
+    'rockstar': ('Hello, World!\n', 2),
 }
 # A second program for the languages whose page shows one: file, output, steps.
 EXPECT2 = {
@@ -53,6 +57,8 @@ EXPECT2 = {
     'shakespeare': ('letters.spl', 'ABCDE', 22),
     'unlambda': ('skk.unl', 'a', 7),
     'false': ('countdown.false', '54321\n', 55),
+    'intercal': ('roman.i', 'I\nMCMXCIX\nV\n', 7),
+    'rockstar': ('count.rock', '1\n2\n3\n14487\n', 13),
 }
 SCRATCH_BLOCKS = [('event', 'when ⚑ clicked'), ('looks', 'say [Hello, World!]')]
 
@@ -76,7 +82,8 @@ def write_programs():
     d = OUT / 'programs'
     d.mkdir(parents=True, exist_ok=True)
     for f in ('hello.bf', 'hello.befunge', 'hello.mb', 'hello.lol', 'count.lol', 'hello.chef', 'alphabet.chef',
-              'hello.spl', 'letters.spl', 'hello.unl', 'skk.unl', 'hello.false', 'countdown.false'):
+              'hello.spl', 'letters.spl', 'hello.unl', 'skk.unl', 'hello.false', 'countdown.false',
+              'hello.i', 'roman.i', 'hello.rock', 'count.rock'):
         shutil.copyfile(SRC / 'programs' / f, d / f)
     bf = (SRC / 'programs/hello.bf').read_text(encoding='utf-8')
     (d / 'hello.ook').write_text(langs.bf_to_ook(bf) + '\n', encoding='utf-8', newline='\n')
@@ -96,6 +103,16 @@ def write_programs():
         if got != (out, steps):
             raise BuildError(f'{name} now gives {got!r}, the pages say {(out, steps)!r}')
         RUN2[key] = got
+    # INTERCAL's politeness rule, checked both ways
+    hello_i = PROG['intercal']
+    for variant, code in ((re.sub(r'PLEASE (DO )?', 'DO ', hello_i), 'E079'), ('\n'.join('PLEASE DO ' + re.sub(r'^(PLEASE )?(DO )?', '', l) for l in hello_i.strip().split('\n')), 'E099')):
+        try:
+            intercal.run(variant)
+        except intercal.IntercalError as e:
+            if not str(e).startswith(code):
+                raise BuildError(f'INTERCAL politeness check gave {e}, expected {code}')
+        else:
+            raise BuildError(f'INTERCAL accepted a program that should give {code}')
 
 
 def size_of(key):
@@ -151,7 +168,7 @@ def glyph(key):
                 f'<span class="g-code g-mb g-mb-after">{row}</span></span>')
     if key == 'lolcode':
         return f'<p class="g g-lol">{html.escape(PROG[key].strip())}</p>'
-    if key in ('chef', 'shakespeare', 'unlambda', 'false'):
+    if key in ('chef', 'shakespeare', 'unlambda', 'false', 'intercal', 'rockstar'):
         # the program's own text: for Chef its ingredients, for the play its first lines
         text = PROG[key].strip()
         if key == 'chef':
@@ -451,19 +468,19 @@ def favicon():
 
 def og():
     cells = []
-    widths = [3, 2, 3, 4, 3, 3, 3, 3, 4, 3, 2, 3]  # in 100 px units, four fields to a row, three rows
+    widths = [3, 2, 2, 3, 2, 3, 2, 2, 3, 2, 3, 3, 3, 3]  # in 100 px units; rows of 5, 5 and 4 fields
     for i, key in enumerate(LANG):
         w = widths[i] * 100
-        row = i // 4
-        x = sum(widths[(i // 4) * 4:i]) * 100
+        row = i // 5
+        x = sum(widths[row * 5:i]) * 100
         name = html.escape(LANG[key]['name'])
         cells.append(f'<rect x="{x + 8}" y="{230 + row * 130 + 4}" width="{w - 16}" height="122" fill="{field(key)}"/>'
                      f'<text x="{x + 28}" y="{230 + row * 130 + 50}" font-family="Archivo, Arial, sans-serif" font-weight="900"'
-                     f' font-size="34" fill="{LANG[key]["ink"]}">{name}</text>')
+                     f' font-size="30" fill="{LANG[key]["ink"]}">{name}</text>')
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">'
             f'<rect width="1200" height="630" fill="#000"/><rect x="8" y="8" width="1184" height="214" fill="#F4F1EA"/>'
             f'<text x="40" y="110" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="78">Esoteric Languages</text>'
-            f'<text x="40" y="180" font-family="Archivo, Arial, sans-serif" font-size="34">Twelve ways to say Hello, World!, eleven run by the site</text>'
+            f'<text x="40" y="180" font-family="Archivo, Arial, sans-serif" font-size="34">Fourteen ways to say Hello, World!, thirteen run by the site</text>'
             f'{"".join(cells)}</svg>\n')
 
 

@@ -1,0 +1,49 @@
+{"title": "Rockstar",
+ "description": "Rockstar programs are written to read like power-ballad lyrics. Its Hello World program, run here, takes {{steps}} steps."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p>Rockstar is a language whose programs look like rock lyrics, and are meant to be sung. It is esoteric in its aim, not its difficulty: under the lyrics it is an ordinary language with variables, loops and arithmetic, with some of the ordinary features given a rock-and-roll spelling.</p>
+<p>Two of these are the point. A <i>poetic number</i> is written as a sentence, and its digits are the lengths of the words: <code>a lean mean wrecking machine</code> is 14487. A <i>poetic string</i> is written with <code>says</code>, and everything after it is the text. Variables can have names like <code>Tommy</code>, <code>the music</code> or <code>Doctor Feelgood</code>.</p>
+<p>This site runs the part in the table. Conditionals, functions, arrays and the rest are not run here.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The lines used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Lines"><table>
+<thead><tr><th>Line</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>Tommy says Hello, World!</code></td><td>Give <code>Tommy</code> the text that follows (a poetic string)</td></tr>
+<tr><td><code>The music was a lean mean wrecking machine</code></td><td>Give a variable a number from word lengths (a poetic number)</td></tr>
+<tr><td><code>Put nothing into the crowd</code></td><td>Give a variable a value. <code>nothing</code> is 0</td></tr>
+<tr><td><code>Shout …</code>, <code>Say …</code>, <code>Whisper …</code></td><td>Print a value and a newline</td></tr>
+<tr><td><code>Build the crowd up</code> <code>Knock the crowd down</code></td><td>Add 1 to, or take 1 from, a variable</td></tr>
+<tr><td><code>While the crowd is less than 3</code></td><td>A loop, which runs until the next blank line. <code>is greater than</code> works too</td></tr>
+<tr><td><code>plus</code> <code>minus</code> <code>times</code> <code>over</code></td><td>Arithmetic</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">{{size}}; it prints {{output}} in {{steps}} steps. The first line sets the text and the second shouts it, so Hello World is two lines of verse.</p>
+{{program}}
+{{run}}
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">A loop and a poetic number. It counts the crowd up to 3, shouts each, then shouts the music. It prints {{output2}} in {{steps2}} steps.</p>
+{{trace}}
+<p class="prose">The blank line ends the loop, which is how Rockstar marks the end of a block. The last line sits outside it. <code>a lean mean wrecking machine</code> has words of 1, 4, 4, 8 and 7 letters, which is where the 14487 comes from.</p>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}
