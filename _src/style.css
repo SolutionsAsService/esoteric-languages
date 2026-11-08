@@ -23,11 +23,11 @@ code, pre { font-family: var(--mono); }
 /* ---- masthead */
 .mast { height: var(--mast); display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding: 0 16px; border-bottom: var(--bar) solid #000; background: var(--paper); }
-.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none;
+.brand { display: flex; align-items: center; min-height: 44px; gap: .6rem; text-decoration: none;
   font: 900 15px/1 var(--sans); font-stretch: 75%; text-transform: uppercase; letter-spacing: .02em; }
 .mark { width: 34px; height: 34px; flex: none; }
 .top ul { display: flex; gap: 1.2rem; list-style: none; margin: 0; padding: 0; }
-.top a { display: inline-block; padding: .6rem 0; font: 700 15px/1 var(--sans); text-decoration: none; }
+.top a { display: inline-flex; align-items: center; min-height: 44px; padding: .6rem 0; font: 700 15px/1 var(--sans); text-decoration: none; }
 .top a[aria-current], .top a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
 
 /* ---- language chips (inner pages) */
@@ -156,7 +156,7 @@ td code { white-space: nowrap; }
 .pager span { display: block; font: 700 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .12em; margin-bottom: .4rem; }
 .pager a:focus-visible { outline-offset: -8px; }
 
-.foot { border-top: var(--bar) solid #000; padding: 1.4rem 16px 2.4rem; font-size: .92rem; color: var(--muted); }
+.foot { border-top: var(--bar) solid #000; padding: 1.4rem 16px 2.4rem; font-size: 15px; color: var(--muted); }
 .foot p { max-width: 40em; margin: .3rem 0; }
 
 /* ---- small screens */
@@ -188,4 +188,15 @@ td code { white-space: nowrap; }
 @media (prefers-reduced-motion: no-preference) {
   .tile a { transition: filter .15s ease; }
   .tile a:hover { filter: saturate(1.15); }
+}
+
+/* Mobile Floor M3 (dada references/mobile-standard.md): on a touch screen every link, chip and summary is a 44px target.
+   Selectors match the specificity of the rules they override (.sources a, details.all summary). */
+@media (pointer: coarse) {
+  th a, td a, li a, .sources a, .foot a { display: inline-flex; align-items: center; min-height: 44px; }
+  .top a { padding: .6rem .35rem; justify-content: center; min-width: 44px; }
+  .chips a { display: flex; align-items: center; min-height: 44px; }
+  th a, td a { min-width: 44px; justify-content: center; }
+  details.all summary { padding: 11px 0; min-height: 44px; box-sizing: border-box; }
+  p a, figcaption a { display: inline-block; padding: 13px 4px; margin: -13px -4px; }
 }
