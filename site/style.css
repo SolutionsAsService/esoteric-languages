@@ -50,7 +50,7 @@ code, pre { font-family: var(--mono); }
 .t-whitespace { grid-column: span 3; } .t-piet { grid-column: span 5; } .t-malbolge { grid-column: span 3; }
 .t-lolcode { grid-column: span 2; } .t-chef { grid-column: span 2; }
 .t-shakespeare, .t-unlambda, .t-false, .t-intercal { grid-column: span 3; }
-.t-rockstar, .t-scratch { grid-column: span 6; }
+.t-rockstar, .t-holyc, .t-scratch { grid-column: span 4; }
 .tile { min-width: 0; min-height: 0; }
 .tile a { display: flex; flex-direction: column; height: 100%; padding: 14px 16px 12px; overflow: hidden;
   background: var(--f); color: var(--i); text-decoration: none; }
@@ -107,6 +107,12 @@ details.all { margin-top: 1rem; }
 details.all summary { cursor: pointer; font-weight: 700; min-height: 24px; padding: .2rem 0; }
 .g-piet { image-rendering: pixelated; }
 .g-sc .sc { font: 700 15px var(--sans); }
+/* HolyC: the real TempleOS screen, cut from the screenshot of the run, its 8 x 8 font kept sharp */
+.g-tos { display: block; height: auto; max-height: 100%; object-fit: contain; object-position: left bottom;
+  image-rendering: pixelated; border: 3px solid #000; background: #fff; }
+.quote { margin: 1.2rem 0 0; padding: .1rem 0 .1rem 1rem; border-left: var(--bar) solid var(--line); font-size: 1.1rem; line-height: 1.45; }
+.quote p { margin: 0; } .quote .cite { margin-top: .4rem; font: 600 13px/1.4 var(--mono); }
+.shot img { display: block; width: 100%; max-width: 640px; height: auto; image-rendering: pixelated; border: 3px solid var(--line); }
 
 /* ---- below the poster */
 .wrap { max-width: 76rem; margin: 0 auto; padding: 0 16px; }
@@ -164,11 +170,12 @@ td code { white-space: nowrap; }
   :root { --bar: 6px; --mast: 56px; }
   .top ul { gap: .9rem; }
   .brand span { font-size: 13px; }
-  .hero { height: 1750px; }
+  .hero { height: 2000px; }
   .hero h1 { padding: 10px 16px 9px; font-size: 30px; }
   .hero h1 small { display: block; margin: .3rem 0 0; font-size: 14px; }
-  .poster { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(7, minmax(0, 1fr)); }
+  .poster { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(8, minmax(0, 1fr)); }
   .poster .tile { grid-column: span 1; }
+  .poster .t-scratch { grid-column: span 2; }  /* fifteen fields: the last one takes the whole row */
   .tile a { padding: 9px 10px 8px; }
   .t-name { font-size: 18px; }
   .t-fig b { font-size: 30px; }

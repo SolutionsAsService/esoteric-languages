@@ -1,0 +1,12 @@
+T:/Home>#include "C:/AUTOTEST"
+Bread costs $2.50
+Bread costs $0.99
+Milk costs $2.50
+0.000041s
+C:/Home/Backend/Lib>Price;
+Bread costs $2.50
+0.000255s
+C:/Home/Backend/Lib>Price("Tea",75);
+Tea costs $0.75
+0.000227s
+C:/Home/Backend/Lib>

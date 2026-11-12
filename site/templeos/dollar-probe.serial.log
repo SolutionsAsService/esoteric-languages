@@ -1,0 +1,40 @@
+BACKEND_BEGIN probe-holyc 1.0.0
+BACKEND_OK
+BACKEND_SECONDS=0
+BACKEND_DOC_BEGIN
+$WW+H,1$$FG,5$$TX+CX,"TempleOS V5.03",D="DD_OS_NAME_VERSION"$$FG$
+
+$TX+CX,"Public Domain Operating System"$
+
+$LK,"Help & Index",A="FI:::/Doc/HelpIndex.DD"$, $LK,"Quick Start: Cmd line",A="FI:::/Doc/CmdLineOverview.DD"$
+
+$MA,"Directory",LM="PopUpCd;Dir;\n"$ of T:/Home
+DATE_ TIME_ SIZE
+12/12 22:36 0200 $MA,".",LM="Cd(\"T:/Home/.\");Dir;\n"$
+12/12 22:36 0000 $MA,"..",LM="Cd(\"T:/Home/..\");Dir;\n"$
+T:/Home>$PT$Cd;#include "Once";
+$PT$$FG$$BG$
+If you answer 'No' you can play with
+the live CD without installing.
+
+Install onto hard drive (y or n)? $PT$NO$FG$
+
+Take Tour(y or n)? $PT$NO$FG$
+4.961659s
+T:/Home>$PT$MountIDEAuto;
+$PT$$FG$$BG$
+$FG,5$ $BT,"1",LM="1\n"$$FG$$LM,4$$FG,4$Hard Drive   $FG,9$ATA   Primary IDE$FG$
+Base0:0x01F0 Base1:0x03F4 Unit:0$LM,0$
+
+$FG,5$ $BT,"2",LM="2\n"$$FG$$LM,4$$FG,4$CD/DVD Drive $FG,9$ATAPI Secondary IDE$FG$
+$FG,5$(Drive originally installed from.)$FG$
+Base0:0x0170 Base1:0x0374 Unit:0$LM,0$
+
+
+0.221059s ans=0x00000002=2
+T:/Home>$PT$#include "C:/AUTOTEST"
+$PT$$FG$$BG$Bread costs $ER$0.99
+Milk costs $ER$$ER$D
+
+BACKEND_DOC_END
+BACKEND_END

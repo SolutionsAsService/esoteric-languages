@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HolyC, a second control · Esoteric Languages</title>
+<meta name="description" content="HolyC is the language of TempleOS, the operating system Terry A. Davis wrote alone. It is not esoteric. Its Hello World is one line, and it was run in TempleOS itself.">
+<link rel="canonical" href="https://esoteric-languages.shadw.app/holyc">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HolyC, a second control · Esoteric Languages">
+<meta property="og:description" content="HolyC is the language of TempleOS, the operating system Terry A. Davis wrote alone. It is not esoteric. Its Hello World is one line, and it was run in TempleOS itself.">
+<meta property="og:url" content="https://esoteric-languages.shadw.app/holyc">
+<meta property="og:image" content="https://esoteric-languages.shadw.app/og.svg">
+<meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="p-holyc">
+<a class="skip" href="#main">Skip to content</a>
+<header class="mast">
+<a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" fill="#000"/><rect x="2" y="2" width="17" height="17" fill="#FF0000"/><rect x="21" y="2" width="9" height="9" fill="#FFFF00"/><rect x="21" y="13" width="9" height="17" fill="#fff"/><rect x="2" y="21" width="17" height="9" fill="#0000FF"/></svg><span>Esoteric<br>Languages</span></a>
+<nav class="top" aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="more.html">More</a></li><li><a href="about.html">About</a></li></ul></nav>
+</header>
+<nav class="chips" aria-label="Languages"><ul><li><a href="brainfuck.html" style="--f:#FF0000;--i:#000">Brainfuck</a></li><li><a href="ook.html" style="--f:#FFFF00;--i:#000">Ook!</a></li><li><a href="befunge.html" style="--f:#00FF00;--i:#000">Befunge</a></li><li><a href="whitespace.html" style="--f:#FFFFFF;--i:#000">Whitespace</a></li><li><a href="piet.html" style="--f:#000000;--i:#fff">Piet</a></li><li><a href="malbolge.html" style="--f:#C00000;--i:#fff">Malbolge</a></li><li><a href="lolcode.html" style="--f:#FF00FF;--i:#000">LOLCODE</a></li><li><a href="chef.html" style="--f:#00FFFF;--i:#000">Chef</a></li><li><a href="shakespeare.html" style="--f:#C0C000;--i:#000">Shakespeare</a></li><li><a href="unlambda.html" style="--f:#C000C0;--i:#fff">Unlambda</a></li><li><a href="false.html" style="--f:#00C000;--i:#000">FALSE</a></li><li><a href="intercal.html" style="--f:#FFC0C0;--i:#000">INTERCAL</a></li><li><a href="rockstar.html" style="--f:#C0C0FF;--i:#000">Rockstar</a></li><li><a href="holyc.html" style="--f:#00C0C0;--i:#000" aria-current=page>HolyC</a></li><li><a href="scratch.html" style="--f:#0000FF;--i:#fff">Scratch</a></li></ul></nav>
+<main id="main">
+<header class="band" style="--f:#00C0C0;--i:#000"><div class="band-text"><p class="kicker">Control</p><h1 id="top">HolyC</h1><p class="band-line">The second control: a C dialect that is also the shell of TempleOS, the operating system one man wrote alone.</p><p class="band-by">By Terry A. Davis, 2003.</p></div><div class="band-glyph" aria-hidden="true"><img class="g g-tos" src="templeos/hello-session.png" width="312" height="56" alt=""></div></header>
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p class="lede">HolyC is the language of TempleOS, an operating system that Terry A. Davis (1969–2018) wrote alone, full-time, from 2003. He wrote all of it: the kernel, the compiler, the editor, the file system, the games, and the language they are written in.</p>
+<p>HolyC is a dialect of C, and it is also the TempleOS shell. There is no separate command language: a line typed at the prompt is HolyC, compiled to machine code and run at once. A file is compiled the same way when it is included, just before it runs. There is no <code>main()</code>: code outside a function runs in order, top to bottom.</p>
+<p>The system shaped the language. The TempleOS charter fixes the screen at 640 × 480 in 16 colours, leaves out networking, runs every program with full access to the machine, and limits the system to 100,000 lines of code for all time. Davis gave it away: “It is public domain, not GPL.”</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="why-h">
+<h2 id="why-h">Why it is here</h2>
+<div class="prose">
+<p>Like <a href="scratch.html">Scratch</a>, HolyC is a control. It was made to be used, every day, for everything a computer does in TempleOS. The charter’s measure for every decision is how fast the compiler compiles itself and the kernel, and it names the danger in the same sentence:</p>
+<blockquote class="quote"><p>“The HolyC language should be changed to optimize this metric, as I did when I changed type casting from prefix standard C to postfix HolyC, but we need a rule to prevent degenerating into a brainfuck language.”</p><p class="cite">TempleOS Charter</p></blockquote>
+<p>What makes it unusual is not a joke or a puzzle but its scale: one person built a whole operating system around one language, and shaped the language to fit it.</p>
+</div>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Comparison"><table>
+<thead><tr><th>Question</th><th>Esoteric languages</th><th>HolyC</th></tr></thead>
+<tbody>
+<tr><td>Who is it for?</td><td>Programmers, as a puzzle, a joke or an argument</td><td>Whoever programs TempleOS: “The priority is user developers”</td></tr>
+<tr><td>Is hard meant to be hard?</td><td>Often yes (Malbolge, Brainfuck)</td><td>No: its changes to C remove typing, such as the parentheses on a call</td></tr>
+<tr><td>Is the strange form the point?</td><td>Yes: images (Piet), invisibility (Whitespace)</td><td>No: its oddities come from the system it lives in</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The quirks used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Quirks"><table>
+<thead><tr><th>Written</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>"Hello, World!\n";</code></td><td>A string on its own is printed. With values after it, it is a format string, as in <code>printf</code></td></tr>
+<tr><td><code>U0</code> <code>U8</code> <code>I64</code></td><td>Types named by size: <code>U0</code> is void, with zero size; <code>U8</code> a byte; <code>I64</code> a 64-bit integer. <code>F64</code> is the only float</td></tr>
+<tr><td><code>I64 cents=250</code></td><td>A default for an argument, which need not be at the end</td></tr>
+<tr><td><code>Price;</code></td><td>A function with no arguments, or only defaults, is called without parentheses</td></tr>
+<tr><td><code>Price(,99);</code></td><td>An argument left out takes its default, in any position</td></tr>
+<tr><td><code>$$$$</code></td><td>One dollar sign, on screen. <a href="#how-h">Why it takes four</a></td></tr>
+</tbody></table></div>
+<p class="prose">Not used here: there is no <code>?:</code> operator and no <code>continue</code>; a type cast is written after the value; <code>#exe {}</code> runs code while the program compiles, and what it prints becomes part of the source; and the bytes and words inside an integer can be reached directly, as in <code>i.u16[1]</code>.</p>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">18 characters, one statement: a string on its own is printed, so the program is the string. It printed <code>Hello, World!<span class="nl">↵</span></code> in TempleOS, under QEMU, on 2026-11-12. This site cannot run HolyC, so its build does not run this program; it checks it against that run (<a href="#record-h">how</a>).</p>
+<figure class="prog"><figcaption>hello.hc · 18 characters · <a href="programs/hello.hc" download>download</a></figcaption><pre tabindex="0" aria-label="HolyC program"><code>&quot;Hello, World!\n&quot;;</code></pre></figure>
+<figure class="term"><figcaption>run in TempleOS V5.03 under QEMU on 2026-11-12, not at build time · <a href="templeos/hello.serial.log">serial log</a> · <a href="templeos/run.json">record</a></figcaption><pre tabindex="0" aria-label="The TempleOS terminal">T:/Home&gt;#include &quot;C:/AUTOTEST&quot;
+Hello, World!
+0.000040s
+C:/Home/Backend/Lib&gt;&quot;Hello, World!\n&quot;;
+Hello, World!
+0.000238s
+C:/Home/Backend/Lib&gt;</pre></figure><figure class="shot"><figcaption>the TempleOS screen at the end of that run, 640 × 480</figcaption><img src="templeos/hello-shell.png" width="640" height="480" alt="The TempleOS screen. The terminal shows the include line, Hello, World!, then the line typed at the prompt and Hello, World! again."></figure>
+<p class="prose">After the file ran, the same line was typed at the TempleOS prompt, and it printed the line again: the shell is the language. Under each command TempleOS prints how long it took.</p>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">Three quirks in seven lines. <code>Price</code> has a default for both its arguments, so <code>Price;</code> calls it with neither and no parentheses, and <code>Price(,99);</code> leaves out only the first. In TempleOS it printed <code>Bread costs $2.50<span class="nl">↵</span>Bread costs $0.99<span class="nl">↵</span>Milk costs $2.50<span class="nl">↵</span></code>.</p>
+<figure class="prog"><figcaption>price.hc · <a href="programs/price.hc" download>download</a></figcaption><pre tabindex="0" aria-label="price.hc"><code>U0 Price(U8 *what=&quot;Bread&quot;,I64 cents=250)
+{
+  &quot;%s costs $$$$%d.%02d\n&quot;,what,cents/100,cents%100;
+}
+Price;
+Price(,99);
+Price(&quot;Milk&quot;);</code></pre></figure><figure class="term"><figcaption>run in TempleOS V5.03 under QEMU on 2026-11-12, not at build time · <a href="templeos/price.serial.log">serial log</a> · <a href="templeos/run.json">record</a></figcaption><pre tabindex="0" aria-label="The TempleOS terminal">T:/Home&gt;#include &quot;C:/AUTOTEST&quot;
+Bread costs $2.50
+Bread costs $0.99
+Milk costs $2.50
+0.000041s
+C:/Home/Backend/Lib&gt;Price;
+Bread costs $2.50
+0.000255s
+C:/Home/Backend/Lib&gt;Price(&quot;Tea&quot;,75);
+Tea costs $0.75
+0.000227s
+C:/Home/Backend/Lib&gt;</pre></figure><figure class="shot"><figcaption>the TempleOS screen at the end of that run, 640 × 480</figcaption><img src="templeos/price-shell.png" width="640" height="480" alt="The TempleOS screen. The terminal shows the three prices, then Price; and Price(&quot;Tea&quot;,75); typed at the prompt, with what each printed."></figure>
+<p class="prose">The dollar sign takes four. TempleOS text is DolDoc, a document format in which <code>$</code> starts a command, such as a colour or a link, and <code>$$</code> is one plain dollar sign. A source file is DolDoc, so <code>$$$$</code> in the file is <code>$$</code> in the string; the terminal is DolDoc too, so <code>$$</code> printed there shows as one <code>$</code>. The first try at this program had two: the terminal read the dollar left in each string as the start of a command, and printed only <code>Bread costs 0.99<span class="nl">↵</span>Milk costs D<span class="nl">↵</span></code>. That run is kept too: <a href="templeos/dollar-probe.hc">the program</a> and <a href="templeos/dollar-probe.serial.log">its log</a>.</p>
+</section>
+
+<section class="section" aria-labelledby="record-h">
+<h2 id="record-h">The record</h2>
+<div class="prose">
+<p>HolyC runs only in TempleOS, so the evidence is a run there, kept in the repository in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/design/templeos">_src/design/templeos</a>. On 2026-11-12 each program was put on a disk by gamec, a tool in <a href="https://github.com/SolutionsAsService/TempleOS">a fork of TempleOS</a>, which boots the TempleOS V5.03 live CD in QEMU, types the commands and copies the terminal to the serial port. Each run took under a minute from boot, in software emulation: 38 seconds for Hello World, 42 for the prices.</p>
+<p>The build checks that record every time it runs: that each program file is the one TempleOS ran, byte for byte; that the serial log shows a clean run and the output these pages print; and that the screen, read back from the screenshot’s pixels, shows the same lines, and each typed command with what it printed. If a program here changes, the build stops until it has been run in TempleOS again.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+<ul class="sources"><li><a href="https://github.com/SolutionsAsService/TempleOS/blob/archive/Doc/HolyC.DD">TempleOS: HolyC (Doc/HolyC.DD)</a></li><li><a href="https://github.com/SolutionsAsService/TempleOS/blob/archive/Doc/Charter.DD">TempleOS: Charter (Doc/Charter.DD)</a></li><li><a href="https://github.com/SolutionsAsService/TempleOS/blob/archive/Doc/Credits.DD">TempleOS: Credits (Doc/Credits.DD)</a></li><li><a href="https://github.com/SolutionsAsService/TempleOS/blob/archive/Adam/ADefine.HC">TempleOS: Adam/ADefine.HC (its age counted from 1 August 2003)</a></li><li><a href="https://github.com/SolutionsAsService/TempleOS/blob/archive/Doc/ChgLog.DD">TempleOS: change log (Doc/ChgLog.DD)</a></li><li><a href="https://en.wikipedia.org/wiki/TempleOS">Wikipedia: TempleOS</a></li></ul>
+</section>
+</div>
+<nav class="pager" aria-label="Previous and next"><a href="rockstar.html"><span>Previous</span>Rockstar</a><a href="scratch.html"><span>Next</span>Scratch</a></nav>
+
+</main>
+<footer class="foot">
+<p>Every program on this site except the two Scratch blocks and the HolyC programs was run by the site’s own build, with the interpreters in <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/eso">_src/eso</a>. The HolyC programs were run in TempleOS, and the build checks them against <a href="https://github.com/SolutionsAsService/esoteric-languages/tree/main/_src/design/templeos">the record of that run</a>. Facts about each language link to their sources.</p>
+<p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
+</footer>
+</body>
+</html>

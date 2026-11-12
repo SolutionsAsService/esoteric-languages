@@ -1,0 +1,36 @@
+{
+  "what": "The HolyC programs on holyc.html, run in TempleOS itself. This site cannot run HolyC on its build host, so the build does not run them: it checks the pages against this record instead (build.py, check_templeos). To run them again, see 'how'.",
+  "date": "2026-11-12",
+  "os": "TempleOS V5.03, live CD (TempleOS.ISO, sha256 5d0fc944e5d89c155c0fc17c148646715bc1db6fa5750c0b913772cfec19ba26)",
+  "vm": "QEMU emulator version 8.2.2, x86_64, 1024 MB, 2 CPUs, no KVM (software emulation), no network",
+  "tool": "gamec run, from https://github.com/SolutionsAsService/TempleOS (Backend/tools/gamec.mjs)",
+  "how": [
+    "Put the program in a game folder as Hello.HC with a shadw.json (language HolyC, install_path ::/Home/HelloHC, runtime.os TempleOS V5.03).",
+    "node Backend/tools/gamec.mjs run <folder> <folder>/hello.img --tos TempleOS.ISO --out <out> --exec '#include \"::/Home/HelloHC/Hello\"' --play play.txt",
+    "gamec boots the live CD, answers its two questions, mounts the disk, types #include \"C:/AUTOTEST\" (a file it writes, which includes the program), and copies the terminal to the serial port: <id>.serial.log.",
+    "The play script then types a line at the TempleOS prompt and takes a screenshot; <name>.screen.txt is the left window read back from that screenshot's pixels."
+  ],
+  "runs": {
+    "hello.hc": {
+      "as": "::/Home/HelloHC/Hello.HC", "sha256": "2e9cf9f5727b32994221ecff3f754f96d4752cfc2d16b55799cff3ec98e43b17",
+      "started": "2026-11-12T21:47:54Z", "seconds": 38,
+      "serial": "hello.serial.log", "screen": "hello.screen.txt", "screenshot": "hello-shell.png",
+      "typed": ["\"Hello, World!\\n\";"],
+      "verdict": "PASS"
+    },
+    "price.hc": {
+      "as": "::/Home/PriceHC/Price.HC", "sha256": "3dae52d9e337ab1a3dfdcf047663521fdbec38227e7018c24323762c056e93c6",
+      "started": "2026-11-12T21:47:54Z", "seconds": 42,
+      "serial": "price.serial.log", "screen": "price.screen.txt", "screenshot": "price-shell.png",
+      "typed": ["Price;", "Price(\"Tea\",75);"],
+      "verdict": "PASS"
+    },
+    "dollar-probe.hc": {
+      "as": "::/Home/ProbeHC/Probe.HC", "sha256": "4bb7f8be3506feafcba42aa11ed309d2fca36888df1cbea0bcc75769d12a4826",
+      "started": "2026-11-12T21:46:16Z", "seconds": 31,
+      "serial": "dollar-probe.serial.log",
+      "note": "The first try at price.hc, with $$ for one dollar. The terminal read the single $ left in the string as the start of a DolDoc command: $ER$ in the log, and the prices vanished.",
+      "verdict": "PASS"
+    }
+  }
+}

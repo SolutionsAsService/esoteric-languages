@@ -1,0 +1,74 @@
+{"title": "HolyC, a second control",
+ "description": "HolyC is the language of TempleOS, the operating system Terry A. Davis wrote alone. It is not esoteric. Its Hello World is one line, and it was run in TempleOS itself."}
+---
+{{band}}
+<div class="wrap">
+<section class="section" aria-labelledby="what-h">
+<h2 id="what-h">What it is</h2>
+<div class="prose">
+<p class="lede">HolyC is the language of TempleOS, an operating system that Terry A. Davis (1969–2018) wrote alone, full-time, from 2003. He wrote all of it: the kernel, the compiler, the editor, the file system, the games, and the language they are written in.</p>
+<p>HolyC is a dialect of C, and it is also the TempleOS shell. There is no separate command language: a line typed at the prompt is HolyC, compiled to machine code and run at once. A file is compiled the same way when it is included, just before it runs. There is no <code>main()</code>: code outside a function runs in order, top to bottom.</p>
+<p>The system shaped the language. The TempleOS charter fixes the screen at 640 × 480 in 16 colours, leaves out networking, runs every program with full access to the machine, and limits the system to 100,000 lines of code for all time. Davis gave it away: “It is public domain, not GPL.”</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="why-h">
+<h2 id="why-h">Why it is here</h2>
+<div class="prose">
+<p>Like <a href="scratch.html">Scratch</a>, HolyC is a control. It was made to be used, every day, for everything a computer does in TempleOS. The charter’s measure for every decision is how fast the compiler compiles itself and the kernel, and it names the danger in the same sentence:</p>
+<blockquote class="quote"><p>“The HolyC language should be changed to optimize this metric, as I did when I changed type casting from prefix standard C to postfix HolyC, but we need a rule to prevent degenerating into a brainfuck language.”</p><p class="cite">TempleOS Charter</p></blockquote>
+<p>What makes it unusual is not a joke or a puzzle but its scale: one person built a whole operating system around one language, and shaped the language to fit it.</p>
+</div>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Comparison"><table>
+<thead><tr><th>Question</th><th>Esoteric languages</th><th>HolyC</th></tr></thead>
+<tbody>
+<tr><td>Who is it for?</td><td>Programmers, as a puzzle, a joke or an argument</td><td>Whoever programs TempleOS: “The priority is user developers”</td></tr>
+<tr><td>Is hard meant to be hard?</td><td>Often yes (Malbolge, Brainfuck)</td><td>No: its changes to C remove typing, such as the parentheses on a call</td></tr>
+<tr><td>Is the strange form the point?</td><td>Yes: images (Piet), invisibility (Whitespace)</td><td>No: its oddities come from the system it lives in</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="section" aria-labelledby="ins-h">
+<h2 id="ins-h">The quirks used here</h2>
+<div class="tablewrap" tabindex="0" role="region" aria-label="Quirks"><table>
+<thead><tr><th>Written</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>"Hello, World!\n";</code></td><td>A string on its own is printed. With values after it, it is a format string, as in <code>printf</code></td></tr>
+<tr><td><code>U0</code> <code>U8</code> <code>I64</code></td><td>Types named by size: <code>U0</code> is void, with zero size; <code>U8</code> a byte; <code>I64</code> a 64-bit integer. <code>F64</code> is the only float</td></tr>
+<tr><td><code>I64 cents=250</code></td><td>A default for an argument, which need not be at the end</td></tr>
+<tr><td><code>Price;</code></td><td>A function with no arguments, or only defaults, is called without parentheses</td></tr>
+<tr><td><code>Price(,99);</code></td><td>An argument left out takes its default, in any position</td></tr>
+<tr><td><code>$$$$</code></td><td>One dollar sign, on screen. <a href="#how-h">Why it takes four</a></td></tr>
+</tbody></table></div>
+<p class="prose">Not used here: there is no <code>?:</code> operator and no <code>continue</code>; a type cast is written after the value; <code>#exe {}</code> runs code while the program compiles, and what it prints becomes part of the source; and the bytes and words inside an integer can be reached directly, as in <code>i.u16[1]</code>.</p>
+</section>
+
+<section class="section" aria-labelledby="hello-h">
+<h2 id="hello-h">Hello, World!</h2>
+<p class="prose">{{size}}, one statement: a string on its own is printed, so the program is the string. It printed {{output}} in TempleOS, under QEMU, on {{tosdate}}. This site cannot run HolyC, so its build does not run this program; it checks it against that run (<a href="#record-h">how</a>).</p>
+{{program}}
+{{run}}
+<p class="prose">After the file ran, the same line was typed at the TempleOS prompt, and it printed the line again: the shell is the language. Under each command TempleOS prints how long it took.</p>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+<h2 id="how-h">How it runs</h2>
+<p class="prose">Three quirks in seven lines. <code>Price</code> has a default for both its arguments, so <code>Price;</code> calls it with neither and no parentheses, and <code>Price(,99);</code> leaves out only the first. In TempleOS it printed {{output2}}.</p>
+{{trace}}
+<p class="prose">The dollar sign takes four. TempleOS text is DolDoc, a document format in which <code>$</code> starts a command, such as a colour or a link, and <code>$$</code> is one plain dollar sign. A source file is DolDoc, so <code>$$$$</code> in the file is <code>$$</code> in the string; the terminal is DolDoc too, so <code>$$</code> printed there shows as one <code>$</code>. The first try at this program had two: the terminal read the dollar left in each string as the start of a command, and printed only {{probe}}. That run is kept too: <a href="templeos/dollar-probe.hc">the program</a> and <a href="templeos/dollar-probe.serial.log">its log</a>.</p>
+</section>
+
+<section class="section" aria-labelledby="record-h">
+<h2 id="record-h">The record</h2>
+<div class="prose">
+<p>HolyC runs only in TempleOS, so the evidence is a run there, kept in the repository in <a href="{{repo}}/tree/main/_src/design/templeos">_src/design/templeos</a>. On {{tosdate}} each program was put on a disk by gamec, a tool in <a href="https://github.com/SolutionsAsService/TempleOS">a fork of TempleOS</a>, which boots the TempleOS V5.03 live CD in QEMU, types the commands and copies the terminal to the serial port. Each run took under a minute from boot, in software emulation: {{tosseconds hello.hc}} seconds for Hello World, {{tosseconds price.hc}} for the prices.</p>
+<p>The build checks that record every time it runs: that each program file is the one TempleOS ran, byte for byte; that the serial log shows a clean run and the output these pages print; and that the screen, read back from the screenshot’s pixels, shows the same lines, and each typed command with what it printed. If a program here changes, the build stops until it has been run in TempleOS again.</p>
+</div>
+</section>
+
+<section class="section" aria-labelledby="src-h">
+<h2 id="src-h">Sources</h2>
+{{sources}}
+</section>
+</div>
+{{pager}}

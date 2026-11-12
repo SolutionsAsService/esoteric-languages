@@ -4,6 +4,7 @@ Every program the site shows is written to site/programs/, run from that file
 by the interpreters in _src/eso/, and checked against the figures the pages
 print. The build fails if an output, a step count or an internal link drifts.
 """
+import hashlib
 import html
 import json
 import pathlib
@@ -29,7 +30,12 @@ import unlambda  # noqa: E402
 SITE_URL = 'https://esoteric-languages.shadw.app/'
 REPO_URL = 'https://github.com/SolutionsAsService/esoteric-languages'
 LANG = json.loads((SRC / 'data/languages.json').read_text(encoding='utf-8'))
-RUNNABLE = [k for k in LANG if LANG[k]['file']]
+# HolyC cannot run on the build host. Its programs were run once in TempleOS itself, and the record of that run
+# (_src/design/templeos/) is what the build checks the pages against: it does not, and cannot, run them.
+TOS_DIR = SRC / 'design' / 'templeos'
+TOS = json.loads((TOS_DIR / 'run.json').read_text(encoding='utf-8'))
+ELSEWHERE = {'holyc'}
+RUNNABLE = [k for k in LANG if LANG[k]['file'] and k not in ELSEWHERE]
 PAGES = ([('index', 'Index', 'index.html')] + [(k, LANG[k]['name'], f'{k}.html') for k in LANG]
          + [('more', 'More languages', 'more.html'), ('about', 'About', 'about.html')])
 
@@ -60,6 +66,16 @@ EXPECT2 = {
     'intercal': ('roman.i', 'I\nMCMXCIX\nV\n', 7),
     'rockstar': ('count.rock', '1\n2\n3\n14487\n', 13),
 }
+# What the HolyC programs printed in TempleOS, as the pages say it, and the lines typed at its prompt afterwards with
+# what each printed. The build reads these from the recorded run, and stops if the record or a program file changes.
+EXPECT_TOS = {
+    'hello.hc': ('Hello, World!\n', [('"Hello, World!\\n";', 'Hello, World!\n')]),
+    'price.hc': ('Bread costs $2.50\nBread costs $0.99\nMilk costs $2.50\n',
+                 [('Price;', 'Bread costs $2.50\n'), ('Price("Tea",75);', 'Tea costs $0.75\n')]),
+}
+# The first try at price.hc, with $$ for the dollar: what it printed once the terminal had eaten the DolDoc commands.
+EXPECT_PROBE = 'Bread costs 0.99\nMilk costs D\n'
+TOS_CROP = (8, 256, 320, 312)  # the left terminal, x 8-320, y 256-312: seven rows of the 8 x 8 font, the whole session
 SCRATCH_BLOCKS = [('event', 'when ⚑ clicked'), ('looks', 'say [Hello, World!]')]
 
 
@@ -103,6 +119,7 @@ def write_programs():
         if got != (out, steps):
             raise BuildError(f'{name} now gives {got!r}, the pages say {(out, steps)!r}')
         RUN2[key] = got
+    check_templeos(d)
     # INTERCAL's politeness rule, checked both ways
     hello_i = PROG['intercal']
     for variant, code in ((re.sub(r'PLEASE (DO )?', 'DO ', hello_i), 'E079'), ('\n'.join('PLEASE DO ' + re.sub(r'^(PLEASE )?(DO )?', '', l) for l in hello_i.strip().split('\n')), 'E099')):
@@ -113,6 +130,76 @@ def write_programs():
                 raise BuildError(f'INTERCAL politeness check gave {e}, expected {code}')
         else:
             raise BuildError(f'INTERCAL accepted a program that should give {code}')
+
+
+def doldoc_plain(text):
+    """TempleOS text as it shows on screen: $$ is one dollar sign, and $...$ is a DolDoc command, not shown."""
+    out, i = [], 0
+    while i < len(text):
+        if text[i] != '$':
+            out.append(text[i])
+            i += 1
+        elif text[i + 1:i + 2] == '$':
+            out.append('$')
+            i += 2
+        else:
+            end = text.find('$', i + 1)
+            i = len(text) if end < 0 else end + 1
+    return ''.join(out)
+
+
+def tos_printed(name):
+    """What the program printed in TempleOS: the terminal between gamec's #include and the end of the dump."""
+    log = (TOS_DIR / TOS['runs'][name]['serial']).read_text(encoding='latin-1')
+    if 'BACKEND_OK' not in log or 'BACKEND_END' not in log:
+        raise BuildError(f'{name}: the TempleOS record has no clean run (no BACKEND_OK and BACKEND_END)')
+    after = log.split('#include "C:/AUTOTEST"', 1)[1].split('\n', 1)[1]
+    return log, doldoc_plain(after.split('\x05', 1)[0])
+
+
+TOS_RUN = {}   # program name -> (output, [(typed, printed)]), from the TempleOS record
+
+
+def check_templeos(d):
+    """The HolyC programs are not run here. Check that each shipped file is the one TempleOS ran, byte for byte,
+    and that the recorded terminal (serial log) and screen (read from the screenshot) say what the pages say."""
+    for name, (out, typed) in EXPECT_TOS.items():
+        rec = TOS['runs'][name]
+        if hashlib.sha256((SRC / 'programs' / name).read_bytes()).hexdigest() != rec['sha256']:
+            raise BuildError(f'{name} is not the file that was run in TempleOS; run it there again and update {TOS_DIR.name}/run.json')
+        _, got = tos_printed(name)
+        if got != out:
+            raise BuildError(f'{name}: the TempleOS record says it printed {got!r}, the pages say {out!r}')
+        if [t for t, _ in typed] != rec['typed']:
+            raise BuildError(f'{name}: the lines typed at the TempleOS prompt were {rec["typed"]!r}')
+        screen = (TOS_DIR / rec['screen']).read_text(encoding='utf-8').split('\n')
+        want = ['T:/Home>#include "C:/AUTOTEST"'] + out.splitlines()
+        if screen[:len(want)] != want:
+            raise BuildError(f'{name}: the TempleOS screen does not show {want!r}')
+        for t, p in typed:
+            line = 'C:/Home/Backend/Lib>' + t
+            if line not in screen or screen[screen.index(line) + 1:screen.index(line) + 1 + len(p.splitlines())] != p.splitlines():
+                raise BuildError(f'{name}: the TempleOS screen does not show {t} printing {p!r}')
+        TOS_RUN[name] = (out, typed)
+        PROG[name] = (SRC / 'programs' / name).read_text(encoding='utf-8')
+        shutil.copyfile(SRC / 'programs' / name, d / name)
+    probe = TOS['runs']['dollar-probe.hc']
+    if hashlib.sha256((TOS_DIR / 'dollar-probe.hc').read_bytes()).hexdigest() != probe['sha256']:
+        raise BuildError('dollar-probe.hc is not the file that was run in TempleOS')
+    raw, got = tos_printed('dollar-probe.hc')
+    if '$ER$' not in raw or got != EXPECT_PROBE:
+        raise BuildError(f'the dollar probe printed {got!r}, the page says {EXPECT_PROBE!r}')
+    PROG['holyc'] = PROG['hello.hc']
+    RUN['holyc'] = (TOS_RUN['hello.hc'][0], None)
+    RUN2['holyc'] = (TOS_RUN['price.hc'][0], None)
+    t = OUT / 'templeos'
+    t.mkdir(exist_ok=True)
+    for f in ('run.json', 'hello-shell.png', 'price-shell.png', 'hello.serial.log', 'price.serial.log', 'dollar-probe.hc',
+              'dollar-probe.serial.log'):
+        shutil.copyfile(TOS_DIR / f, t / f)
+    from PIL import Image
+    with Image.open(TOS_DIR / 'hello-shell.png') as im:
+        im.crop(TOS_CROP).save(t / 'hello-session.png', optimize=True)
 
 
 def size_of(key):
@@ -200,6 +287,10 @@ def glyph(key):
                 f'aria-hidden="true" focusable="false">{bars}</svg>')
     if key == 'piet':
         return piet.to_svg(PROG[key], codel=4, cls='g g-svg g-piet')
+    if key == 'holyc':
+        # the real TempleOS screen, cut from the screenshot of the run: the session at its prompt
+        w, h = TOS_CROP[2] - TOS_CROP[0], TOS_CROP[3] - TOS_CROP[1]
+        return f'<img class="g g-tos" src="templeos/hello-session.png" width="{w}" height="{h}" alt="">'
     if key == 'scratch':
         fills = {'event': ('#FFBF00', '#000'), 'looks': ('#9966FF', '#fff')}
         parts = []
@@ -222,10 +313,13 @@ def poster():
         d = LANG[key]
         if key == 'scratch':
             fig, unit, out = str(len(SCRATCH_BLOCKS)), 'blocks', 'control: not esoteric'
+        elif key in ELSEWHERE:
+            lines = len(PROG[key].strip().splitlines())
+            fig, unit, out = str(lines), 'line' if lines == 1 else 'lines', shown(RUN[key][0])
         else:
             out_text, steps = RUN[key]
             fig, unit, out = f'{steps:,}', 'step' if steps == 1 else 'steps', shown(out_text)
-        note = {'ook': 'the Brainfuck program, in orangutan',
+        note = {'ook': 'the Brainfuck program, in orangutan', 'holyc': 'control: run in TempleOS, not by this site',
                 'malbolge': f'{malbolge_after()[2]} of its {len(PROG["malbolge"])} characters rewritten as it ran'}.get(key)
         tiles.append(
             f'<li class="tile t-{key}" style="--f:{field(key)};--i:{d["ink"]}">'
@@ -242,7 +336,7 @@ def band(key):
     d = LANG[key]
     who = f'{html.escape(d["by"])}' + (f', {d["year"]}' if d['year'] else '')
     return (f'<header class="band" style="--f:{field(key)};--i:{d["ink"]}">'
-            f'<div class="band-text"><p class="kicker">{"Control" if key == "scratch" else "Esoteric language"}</p>'
+            f'<div class="band-text"><p class="kicker">{"Control" if key in ("scratch", "holyc") else "Esoteric language"}</p>'
             f'<h1 id="top">{html.escape(d["name"])}</h1><p class="band-line">{html.escape(d["line"])}</p>'
             f'<p class="band-by">By {who}.</p></div>'
             f'<div class="band-glyph" aria-hidden="true">{glyph(key)}</div></header>')
@@ -265,9 +359,23 @@ def program_block(key):
             f'<pre tabindex="0" aria-label="{html.escape(d["name"])} program"><code>{html.escape(text.rstrip())}</code></pre></figure>')
 
 
+def tos_figures(name, what):
+    """A HolyC program's recorded run: the TempleOS screen as text, and the screenshot it was read from."""
+    rec = TOS['runs'][name]
+    screen = (TOS_DIR / rec['screen']).read_text(encoding='utf-8').rstrip()
+    return (f'<figure class="term"><figcaption>run in TempleOS V5.03 under QEMU on {TOS["date"]}, not at build time · '
+            f'<a href="templeos/{rec["serial"]}">serial log</a> · <a href="templeos/run.json">record</a></figcaption>'
+            f'<pre tabindex="0" aria-label="The TempleOS terminal">{html.escape(screen)}</pre></figure>'
+            f'<figure class="shot"><figcaption>the TempleOS screen at the end of that run, 640 × 480</figcaption>'
+            f'<img src="templeos/{rec["screenshot"]}" width="640" height="480" alt="{html.escape(what)}"></figure>')
+
+
 def run_block(key):
     out, steps = RUN[key]
     f = LANG[key]['file']
+    if key in ELSEWHERE:
+        return tos_figures(f, 'The TempleOS screen. The terminal shows the include line, Hello, World!, then the line '
+                              'typed at the prompt and Hello, World! again.')
     return (f'<figure class="term"><figcaption>run by this site’s build</figcaption><pre tabindex="0" aria-label="Output">'
             f'$ python _src/eso/run.py site/programs/{f}\n{html.escape(f"site/programs/{f}: {out!r} in {steps} steps")}'
             f'</pre></figure>')
@@ -364,6 +472,12 @@ def trace(key):
                 f' mod 94, and after each step the character is replaced through a fixed substitution table, so the'
                 f' same cell means something else next time.</p><div class="tablewrap" tabindex="0" role="region" aria-label="Every step">'
                 f'<table><thead><tr><th>Step</th><th>Cell</th><th>Holds</th><th>Does</th><th>Prints</th></tr></thead><tbody>{rows}</tbody></table></div>')
+    if key == 'holyc':
+        name = 'price.hc'
+        return (f'<figure class="prog"><figcaption>{name} · <a href="programs/{name}" download>download</a></figcaption>'
+                f'<pre tabindex="0" aria-label="{name}"><code>{html.escape(PROG[name].rstrip())}</code></pre></figure>'
+                + tos_figures(name, 'The TempleOS screen. The terminal shows the three prices, then Price; and '
+                                    'Price("Tea",75); typed at the prompt, with what each printed.'))
     if key in EXPECT2:
         name = EXPECT2[key][0]
         return (f'<figure class="prog"><figcaption>{name} · <a href="programs/{name}" download>download</a></figcaption>'
@@ -379,7 +493,7 @@ def PROG_TEXT(name):
 
 def facts_list():
     rows = ''.join(f'<tr><th scope="row"><a href="{k}.html">{html.escape(d["name"])}</a></th><td>{html.escape(d["by"])}</td>'
-                   f'<td>{d["year"] or "—"}</td><td>{"—" if k == "scratch" else f"{RUN[k][1]:,}"}</td></tr>'
+                   f'<td>{d["year"] or "—"}</td><td>{"—" if k == "scratch" or RUN[k][1] is None else f"{RUN[k][1]:,}"}</td></tr>'
                    for k, d in LANG.items())
     return (f'<div class="tablewrap" tabindex="0" role="region" aria-label="All languages"><table><thead><tr><th>Language</th>'
             f'<th>Made by</th><th>Year</th><th>Steps to say hello</th></tr></thead><tbody>{rows}</tbody></table></div>')
@@ -446,6 +560,15 @@ def expand(key, body):
             return glyph('scratch')
         if name == 'blocks':
             return str(len(SCRATCH_BLOCKS))
+        if name == 'lines':
+            n = len(PROG[k].strip().splitlines())
+            return f'{n} line' + ('' if n == 1 else 's')
+        if name == 'tosdate':
+            return TOS['date']
+        if name == 'tosseconds':
+            return str(TOS['runs'][arg.strip()]['seconds'])
+        if name == 'probe':
+            return f'<code>{shown(EXPECT_PROBE)}</code>'
         raise BuildError(f'unknown placeholder {name}')
     return re.sub(r'\{\{(.+?)\}\}', sub, body)
 
@@ -468,7 +591,7 @@ def favicon():
 
 def og():
     cells = []
-    widths = [3, 2, 2, 3, 2, 3, 2, 2, 3, 2, 3, 3, 3, 3]  # in 100 px units; rows of 5, 5 and 4 fields
+    widths = [3, 2, 2, 3, 2, 3, 2, 2, 3, 2, 2, 3, 3, 2, 2]  # in 100 px units; three rows of 5 fields
     for i, key in enumerate(LANG):
         w = widths[i] * 100
         row = i // 5
@@ -480,7 +603,7 @@ def og():
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">'
             f'<rect width="1200" height="630" fill="#000"/><rect x="8" y="8" width="1184" height="214" fill="#F4F1EA"/>'
             f'<text x="40" y="110" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="78">Esoteric Languages</text>'
-            f'<text x="40" y="180" font-family="Archivo, Arial, sans-serif" font-size="34">Fourteen ways to say Hello, World!, thirteen run by the site</text>'
+            f'<text x="40" y="180" font-family="Archivo, Arial, sans-serif" font-size="34">Fifteen ways to say Hello, World!: thirteen run by the site, one in TempleOS</text>'
             f'{"".join(cells)}</svg>\n')
 
 
@@ -531,7 +654,7 @@ def page_html(key, file, meta, body):
 {body}
 </main>
 <footer class="foot">
-<p>Every program on this site except the two Scratch blocks was run by the site’s own build, with the interpreters in <a href="{REPO_URL}/tree/main/_src/eso">_src/eso</a>. Facts about each language link to their sources.</p>
+<p>Every program on this site except the two Scratch blocks and the HolyC programs was run by the site’s own build, with the interpreters in <a href="{REPO_URL}/tree/main/_src/eso">_src/eso</a>. The HolyC programs were run in TempleOS, and the build checks them against <a href="{REPO_URL}/tree/main/_src/design/templeos">the record of that run</a>. Facts about each language link to their sources.</p>
 <p>By SolutionsAsService. This site sets no cookies and collects nothing.</p>
 </footer>
 </body>

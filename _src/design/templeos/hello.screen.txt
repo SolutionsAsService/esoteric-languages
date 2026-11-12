@@ -1,0 +1,7 @@
+T:/Home>#include "C:/AUTOTEST"
+Hello, World!
+0.000040s
+C:/Home/Backend/Lib>"Hello, World!\n";
+Hello, World!
+0.000238s
+C:/Home/Backend/Lib>
